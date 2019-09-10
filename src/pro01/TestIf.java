@@ -1,5 +1,9 @@
 package pro01;
-
+/**
+ * 测试if语句的基本使用
+ * @author Administrator
+ *
+ */
 
 public class TestIf {
 	public static void main(String[] args) {

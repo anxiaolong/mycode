@@ -11,11 +11,15 @@ public class TestWeiyunsuan {
 //		System.out.println(~15); // 
 		
 		//三目运算测试
-		int a = 10;
-		int b = -3;
-		String s = a>0 ?"test":"pass";
-		System.out.println(s);
-		int x = a<0 ? 3 : (b>0?5:8);
-		System.out.println(x);
+//		int a = 10;
+//		int b = -3;
+//		String s = a>0 ?"test":"pass";
+//		System.out.println(s);
+//		int x = a<0 ? 3 : (b>0?5:8);
+//		System.out.println(x);
+		short a = 11;
+//		short b = 2222222222; 超过表数范围
+		
+
 	}
 }

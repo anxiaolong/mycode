@@ -1,5 +1,5 @@
 package pro01;
-
+//²âÊÔÌá½»´úÂë
 import java.util.Scanner;
 
 public class TestZuoye2 {

@@ -23,10 +23,24 @@ public class Stu {
 	}
 	
 	//Stu这个类的构造方法，不写会自动创建
+	//构造方法的重载，多个构造方法
 	public Stu() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
+	public  Stu(int id,String name) {
+		this.id = id; //this表示创建号的对象
+		this.name = name;
+	}
+	public  Stu(String name,int age) {
+		this.name = name;
+		this.age = age;
+		
+	}
+	
 	public static void main(String[] args) {
+		Stu stu02 = new Stu(12, "anxiaolong");
+		Stu stu03 = new Stu("test", 11);
+		
 		//调用类的构造方法,新建一个Stu对象stu1
 		Stu stu1 = new Stu();
 		//给stu1这个对象的name赋值

@@ -16,7 +16,7 @@ class  Test {
 	}
 }
 
-public class TestStatci {
+public class TestStatc {
 	public static void main(String[] args) {
 		System.out.println(Test.name); //静态变量可以直接调用
 		Test Test1 = new Test();

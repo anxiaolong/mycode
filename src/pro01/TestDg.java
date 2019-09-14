@@ -1,6 +1,7 @@
 package pro01;
 
 public class TestDg {
+	
 	public static void main(String[] args) {
 //		System.out.println(Dg(10));
 		//使用循环实现

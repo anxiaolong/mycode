@@ -17,11 +17,13 @@ public class TestInterface {
 		c1Cxy.jump();
 		c1Cxy.sport();
 		c1Cxy.xuexi();
+		c1Cxy.age = 27; //给内部类进行赋值
+		
 	}
 	
 	//定义一个内部类，继承Human又实现接口Man
 	public class Cxy extends Human implements Man  {
-		
+		int age;
 		public void run() {
 			System.out.println("跑"+Run.a+"米");
 		}

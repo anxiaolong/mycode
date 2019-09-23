@@ -20,7 +20,7 @@ class MyException extends RuntimeException {
 	public MyException() {}
 	//自定义异常类对象的构造方法
 	public MyException(String s) {
-		super(s); //输出字符串s
+		super(s); 
 	}
 }
 

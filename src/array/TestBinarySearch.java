@@ -1,5 +1,7 @@
 package array;
-
+/**
+ * ¶ş·Ö²éÕÒ²âÊÔ
+ */
 import java.util.Arrays;
 
 public class TestBinarySearch {

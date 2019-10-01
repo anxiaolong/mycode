@@ -1,5 +1,7 @@
 package cy_class;
 
+import java.sql.Date;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
@@ -10,8 +12,7 @@ import java.util.Scanner;
  *
  */
 public class TestCalendar {
-	public static void main(String[] args) {
-		
+	public static void test1() {
 		//从键盘获取yyyy-MM-dd格式的日期
 		System.out.println("请输入日期，格式如：2019-01-01:\n");
 		Scanner s = new Scanner(System.in);
@@ -47,5 +48,8 @@ public class TestCalendar {
             }
             g.add(Calendar.DATE, 1);//循环一次，日期数加1
         }
-	} 
+	}
+	public static void main(String[] args) {
+			test1();
+		}
 }

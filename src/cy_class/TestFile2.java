@@ -18,8 +18,11 @@ public class TestFile2 {
 		System.out.println(file.getName()); //输出文件名或目录名
 		if (file.isDirectory()) {  //判断文件是目录情况
 			File[] sFiles = file.listFiles();  //罗列目录中的文件或文件夹
-			for (File file2 : sFiles) { //foreach结构，逐个使用数组中元素
-				test(file2, leval+1); //递归调用打印目录文件名方法，把文件夹和文件夹内的文件全部打印
+//			for (File file2 : sFiles) { //foreach结构，逐个使用数组中元素
+//				test(file2, leval+1); //递归调用打印目录文件名方法，把文件夹和文件夹内的文件全部打印
+//			}
+			for (int i = 0; i < sFiles.length; i++) { //用熟悉的for结构打印
+				test(sFiles[i], leval+1);
 			}
 		}
 	}

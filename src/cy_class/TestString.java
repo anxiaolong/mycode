@@ -28,7 +28,13 @@ public class TestString {
 		System.out.println(a.compareTo(a1)); //逐个比较，返回字符ASCII差值
 	}
 	public static void main(String[] args) {
-		test1();
-		test2();
+//		test1();
+//		test2();
+		String a = "anxiaolong"; //发现没有对应的字符串，new一个对象
+		String b = "anxiaolong"; //发现已经有了对应的字符串，直接引用其地址
+		String c = new String("anxiaolong"); //每次执行都会新建一个对象
+		System.out.println(a==b);
+		System.out.println(a==c);
+		System.out.println(a.equals(c));
 	}
 }

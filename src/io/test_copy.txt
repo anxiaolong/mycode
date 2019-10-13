@@ -1,1 +1,12 @@
 anxiaolongddddddddddddddddd
+BufferedReader/BufferedWriter增加了缓存机制，大大提高了读写文本文件的效率，同时，提供了更方便的按行读取的方法：readLine(); 处理文本时，我们一般可以使用缓冲字符流。
+
+【示例10-8】使用BufferedReader与BufferedWriter实现文本文件的复制
+anxiaolongddddddddddddddddd
+BufferedReader/BufferedWriter增加了缓存机制，大大提高了读写文本文件的效率，同时，提供了更方便的按行读取的方法：readLine(); 处理文本时，我们一般可以使用缓冲字符流。
+
+【示例10-8】使用BufferedReader与BufferedWriter实现文本文件的复制
+anxiaolongddddddddddddddddd
+BufferedReader/BufferedWriter增加了缓存机制，大大提高了读写文本文件的效率，同时，提供了更方便的按行读取的方法：readLine(); 处理文本时，我们一般可以使用缓冲字符流。
+
+【示例10-8】使用BufferedReader与BufferedWriter实现文本文件的复制

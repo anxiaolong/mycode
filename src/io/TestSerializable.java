@@ -2,7 +2,8 @@ package io;
 /**
  * 实现了Serializable接口的自定义类才能
  * 使用writeObject()和readObject()方法
- * 把对象包装成流进行传输
+ * 把对象包装成流进行传输，写入文件的操作也被叫做持久化
+ * transient修饰的变量不能被序列化
  */
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -58,7 +59,7 @@ class TestSerializable1 implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	int age;
-	String name;
+	transient String name;//transient修饰的变量不能被序列化
 	String test;
 	
 	public TestSerializable1(int age,String name,String test) {

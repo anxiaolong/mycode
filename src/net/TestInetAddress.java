@@ -1,5 +1,8 @@
 package net;
-
+/**
+ * 通过getHost(),创建本机网络对象
+ * 通过getByName()，使用ip和域名创建对象
+ */
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 

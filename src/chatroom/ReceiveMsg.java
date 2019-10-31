@@ -7,14 +7,12 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class ReceiveMsg implements Runnable {
-	private Socket socket;
-	
-	public ReceiveMsg(Socket socket) {
-		this.socket = socket;
+	DataInputStream dis;
+	public ReceiveMsg(Socket socket) throws IOException {
+		this.dis = new DataInputStream(socket.getInputStream());
 	}
 	
 	public void receive() throws IOException {
-		DataInputStream dis = new DataInputStream(socket.getInputStream());
 		boolean isRunning = true;
 		while (isRunning) {
 			System.out.println(dis.readUTF());
@@ -28,14 +26,6 @@ public class ReceiveMsg implements Runnable {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		finally {
-			try {
-				socket.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 }

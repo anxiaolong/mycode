@@ -9,16 +9,18 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 
 public class SendMsg implements Runnable {
-	private Socket socket;
+	BufferedReader br;
+	DataOutputStream dos;
+	boolean isRunning = true;
 	
-	public SendMsg(Socket socket) {
-		this.socket = socket;
+	public SendMsg(Socket socket,String name) throws IOException {
+		dos = new DataOutputStream(socket.getOutputStream());
+		dos.writeUTF(name);
+		dos.flush();
 	}
 	
 	public void send() throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-		boolean isRunning = true;
+		br = new BufferedReader(new InputStreamReader(System.in));
 		while (isRunning) {
 			String msg = br.readLine();
 			dos.writeUTF(msg);

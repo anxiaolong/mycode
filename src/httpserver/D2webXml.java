@@ -1,6 +1,10 @@
 package httpserver;
-
+/**
+ * 使用解析xml、反射，实现在web中的应用
+ * 
+ */
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +17,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class D2webXml {
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		//1.创建SAX解析工厂
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		//2.创建解析器
@@ -23,14 +27,23 @@ public class D2webXml {
 		parser.parse(Thread.currentThread().getContextClassLoader()
 				.getResourceAsStream("httpserver/web.xml"), handler);
 		//4.测试WebHandler容器中的数据
-		List<D2Entity> e = handler.getEntities();
-		List<D2Mapping> m = handler.getMappings();
-		for (D2Entity d2Entity : e) {
-			System.out.println(d2Entity.getClassString()+" "+d2Entity.getName());
-		}
-		for (D2Mapping d2Mapping : m) {
-			System.out.println(d2Mapping.getName()+" "+d2Mapping.getPatterns());
-		}
+//		List<D2Entity> e = handler.getEntities();
+//		List<D2Mapping> m = handler.getMappings();
+//		for (D2Entity d2Entity : e) {
+//			System.out.println(d2Entity.getClassString()+" "+d2Entity.getName());
+//		}
+//		for (D2Mapping d2Mapping : m) {
+//			System.out.println(d2Mapping.getName()+" "+d2Mapping.getPatterns());
+//		}
+		//5.创建WebContext对象，尝试使用pattern找到对应的类
+		D2WebContext webContext = new D2WebContext(handler.getEntities(), handler.getMappings());
+		String classString = webContext.findClass("/g");
+		System.out.println(classString);
+		//6.使用反射创建对象，实现具体登陆或者注册的方法
+		Class clz = Class.forName(classString);
+		System.out.println(clz);
+		D2Servlet servlet = (D2Servlet)clz.getConstructor().newInstance();
+		servlet.service();
 	}
 }
 

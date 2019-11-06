@@ -1,5 +1,7 @@
 package httpserver;
-
+/**
+ * 接收浏览器请求
+ */
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -82,6 +84,7 @@ public class D3Server01 {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println("客户端异常");
 		}
 	}
 	

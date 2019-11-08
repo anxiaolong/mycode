@@ -1,8 +1,8 @@
 package httpserver;
 
-public class D2LoginServlet implements D2Servlet  {
+public class D3LoginServlet implements D3Servlet  {
 	
-	public D2LoginServlet() {
+	public D3LoginServlet() {
 		// TODO Auto-generated constructor stub
 	}
 	

@@ -16,7 +16,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class D2webXml {
+public class D3webXml {
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		//1.创建SAX解析工厂
 		SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -36,36 +36,36 @@ public class D2webXml {
 //			System.out.println(d2Mapping.getName()+" "+d2Mapping.getPatterns());
 //		}
 		//5.创建WebContext对象，尝试使用pattern找到对应的类
-		D2WebContext webContext = new D2WebContext(handler.getEntities(), handler.getMappings());
+		D3WebContext webContext = new D3WebContext(handler.getEntities(), handler.getMappings());
 		String classString = webContext.findClass("/g");
 		System.out.println(classString);
 		//6.使用反射创建对象，实现具体登陆或者注册的方法
 		Class clz = Class.forName(classString);
 		System.out.println(clz);
-		D2Servlet servlet = (D2Servlet)clz.getConstructor().newInstance();
+		D3Servlet servlet = (D3Servlet)clz.getConstructor().newInstance();
 		servlet.service();
 	}
 }
 
 class WebHandler extends DefaultHandler {
-	private D2Entity entity;
-	private D2Mapping mapping;
-	private List<D2Entity> entities;
-	private List<D2Mapping> mappings;
+	private D3Entity entity;
+	private D3Mapping mapping;
+	private List<D3Entity> entities;
+	private List<D3Mapping> mappings;
 	private boolean isMapping = false;
 	private String tag;
 	
-	public List<D2Entity> getEntities() {
+	public List<D3Entity> getEntities() {
 		return entities;
 	}
 
-	public List<D2Mapping> getMappings() {
+	public List<D3Mapping> getMappings() {
 		return mappings;
 	}
 
 	public WebHandler() {
-		entities = new ArrayList<D2Entity>();
-		mappings = new ArrayList<D2Mapping>();
+		entities = new ArrayList<D3Entity>();
+		mappings = new ArrayList<D3Mapping>();
 	}
 	
 	@Override
@@ -73,10 +73,10 @@ class WebHandler extends DefaultHandler {
 //		System.out.println(qName);
 		tag = qName;
 		if (qName.equals("servlet")) {
-			entity = new D2Entity();
+			entity = new D3Entity();
 		}
 		if (qName.equals("servlet-mapping")) {
-			mapping = new D2Mapping();
+			mapping = new D3Mapping();
 			isMapping = true;
 		}
 	}

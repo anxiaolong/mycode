@@ -4,7 +4,7 @@ package httpserver;
  * @author Administrator
  *
  */
-public interface D2Servlet {
+public interface D3Servlet {
 	//需要实现的方法
 	public void service();
 }

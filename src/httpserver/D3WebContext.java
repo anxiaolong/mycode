@@ -8,20 +8,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class D2WebContext {
+public class D3WebContext {
 	//目标：通过url-pattern找到对应的类
 	//servlet-name-->servlet-class
 	private Map<String, String> entityMap;
 	//url-pattern-->servlet-name
 	private Map<String, String> mappingMap;
 	
-	public D2WebContext(List<D2Entity> entities,List<D2Mapping> mappings) {
+	public D3WebContext(List<D3Entity> entities,List<D3Mapping> mappings) {
 		entityMap = new HashMap<String, String>();
 		mappingMap = new HashMap<String, String>();
-		for (D2Entity d2Entity : entities) {
+		for (D3Entity d2Entity : entities) {
 			entityMap.put(d2Entity.getName(), d2Entity.getClassString());
 		}
-		for (D2Mapping d2Mapping : mappings) {
+		for (D3Mapping d2Mapping : mappings) {
 			Set<String> set = d2Mapping.getPatterns();
 			for (Iterator<String> setIterator=set.iterator();setIterator.hasNext();) {
 				String temp = setIterator.next();

@@ -8,7 +8,7 @@ import java.util.Set;
  * @author Administrator
  *
  */
-public class D2Mapping {
+public class D3Mapping {
 	private String name;
 	private Set<String> patterns;
 	
@@ -20,7 +20,7 @@ public class D2Mapping {
 		patterns.add(s);
 	}
 
-	public D2Mapping() {
+	public D3Mapping() {
 		patterns = new HashSet<String>();
 	}
 	

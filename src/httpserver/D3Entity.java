@@ -4,7 +4,7 @@ package httpserver;
  * @author Administrator
  *
  */
-public class D2Entity {
+public class D3Entity {
 	private String name;
 	private String classString;
 	

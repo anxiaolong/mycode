@@ -6,5 +6,5 @@ package httpserver;
  */
 public interface D3Servlet {
 	//需要实现的方法
-	public void service();
+	public void service(D3Request request,D3Response response);
 }

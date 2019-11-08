@@ -43,7 +43,7 @@ public class D3webXml {
 		Class clz = Class.forName(classString);
 		System.out.println(clz);
 		D3Servlet servlet = (D3Servlet)clz.getConstructor().newInstance();
-		servlet.service();
+//		servlet.service();
 	}
 }
 

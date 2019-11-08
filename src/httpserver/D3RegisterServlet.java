@@ -2,7 +2,16 @@ package httpserver;
 
 public class D3RegisterServlet implements D3Servlet {
 	@Override
-	public void service() {
-	System.out.println("注册加载。。。");
+	public void service(D3Request request,D3Response response) {
+		response.print("<html>");
+		response.print("<head>");
+		response.print("<title>");
+		response.print(request.decode("结果：", "utf-8"));
+		response.print("</title>");
+		response.print("</head>");
+		response.print("<body>");
+		response.print(request.decode("注册成功", "utf-8"));
+		response.print("</body>");
+		response.print("</html>");
 	}
 }

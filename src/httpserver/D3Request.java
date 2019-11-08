@@ -1,8 +1,6 @@
 package httpserver;
 /**
  * 封装请求request
- * 封装请求：method url queryStr
- * 将请求参数转化为map
  */
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,9 +25,15 @@ public class D3Request {
 	private String url;
 	//请求参数
 	private List<String> queryStr;
+	public String getRequestInfo() {
+		return requestInfo;
+	}
 	//参数map
 	private Map<String, List<String>> parameterMap;
 	
+	public String getUrl() {
+		return url;
+	}
 	private final String crlf = "\r\n";
 	private final String blank = " ";
 	
@@ -45,6 +49,8 @@ public class D3Request {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		parseRequestInfo();
+		coverMap();
 	}
 	
 	//分析请求信息
@@ -108,6 +114,14 @@ public class D3Request {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public String getName() {
+		List<String> name = parameterMap.get("name");
+		for (String string : name) {
+			return string;
+		}
+		return "游客";
 	}
 }
 

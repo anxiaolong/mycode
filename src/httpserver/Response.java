@@ -9,7 +9,7 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.Date;
 
-public class D3Response {
+public class Response {
 	private BufferedWriter bw;
 	//响应正文
 	public StringBuilder content;
@@ -20,14 +20,14 @@ public class D3Response {
 	private final String blank = " ";
 	private final String crlf = "\r\n";//Linux下换行
 	
-	public D3Response() {
+	public Response() {
 		content = new StringBuilder();
 		headInfo = new StringBuilder();
 		len = 0;
 	}
 	
 	//通过socket构造响应对象
-	public  D3Response(Socket socket) {
+	public  Response(Socket socket) {
 		this();//调用空构造
 		try {
 			bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -38,19 +38,19 @@ public class D3Response {
 	}
 	
 	//通过输出流构造响应对象
-	public D3Response(OutputStream os) {
+	public Response(OutputStream os) {
 		this();
 		bw = new BufferedWriter(new OutputStreamWriter(os));
 	}
 	
 	//响应正文添加内容
-	public D3Response print(String s) {
+	public Response print(String s) {
 		content.append(s);
 		len+= s.getBytes().length;
 		return this;
 	}
 	//响应正文添加并换行
-	public D3Response println(String s) {
+	public Response println(String s) {
 		content.append(s).append(crlf);
 		len += (s+crlf).getBytes().length;
 		return this;

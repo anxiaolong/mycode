@@ -16,7 +16,7 @@ import java.util.Map.Entry;
 
 //1.封装请求：method url queryStr
 //2.将请求参数转化为map
-public class D3Request {
+public class Request {
 	//全部请求信息
 	private String requestInfo;
 	//请求方式
@@ -37,11 +37,11 @@ public class D3Request {
 	private final String crlf = "\r\n";
 	private final String blank = " ";
 	
-	public D3Request(Socket socket) {
+	public Request(Socket socket) {
 		queryStr = new ArrayList<String>();
 		try {
 			InputStream is = socket.getInputStream();
-			byte[] datas = new byte[1024*1024];
+			byte[] datas = new byte[1024*1024*1024];
 			int len = is.read(datas);
 			requestInfo = new String(datas, 0, len);
 //			System.out.println(requestInfo);
@@ -118,8 +118,10 @@ public class D3Request {
 	
 	public String getName() {
 		List<String> name = parameterMap.get("name");
-		for (String string : name) {
-			return string;
+		if (name!=null) {
+			for (String string : name) {
+				return string;
+			}
 		}
 		return "游客";
 	}

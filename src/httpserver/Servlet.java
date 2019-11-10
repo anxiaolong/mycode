@@ -4,7 +4,7 @@ package httpserver;
  * @author Administrator
  *
  */
-public interface D3Servlet {
+public interface Servlet {
 	//需要实现的方法
-	public void service(D3Request request,D3Response response);
+	public void service(Request request,Response response);
 }

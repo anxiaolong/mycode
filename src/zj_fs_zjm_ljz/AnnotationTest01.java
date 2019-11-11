@@ -4,7 +4,7 @@ package zj_fs_zjm_ljz;
  * @author Administrator
  *
  */
-public class TestAnnotation01 {
+public class AnnotationTest01 {
 	
 	@Override //override注解 重写父类的方法
 	public String toString() {
@@ -24,6 +24,6 @@ public class TestAnnotation01 {
 	}
 	
 	public static void main(String[] args) {
-		TestAnnotation01.print();
+		AnnotationTest01.print();
 	}
 }

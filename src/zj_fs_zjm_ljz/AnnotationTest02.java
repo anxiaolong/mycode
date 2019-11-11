@@ -5,7 +5,7 @@ package zj_fs_zjm_ljz;
  *
  */
 @Annotation01
-public class TestAnnotation02 {
+public class AnnotationTest02 {
 	@Annotation01(studentName="anxiaolong",age=27,id=1,
 			school= {"成都大学"})
 	public void test1() {

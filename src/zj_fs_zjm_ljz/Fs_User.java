@@ -4,6 +4,13 @@ public class Fs_User {
 	private int id;
 	private String name;
 	private int age;
+	public String new_name;
+	
+	public Fs_User(int id,String name,int age) {
+		this.id = id;
+		this.name = name;
+		this.age = age;
+	}
 	
 	public int getId() {
 		return id;
@@ -32,4 +39,5 @@ public class Fs_User {
 	public Fs_User() {
 		// TODO Auto-generated constructor stub
 	}
+	
 }

@@ -4,7 +4,7 @@ package zj_fs_zjm_ljz;
  * @author Administrator
  *
  */
-public class ljz_test02 {
+public class Ljz_test02 {
 	public static void main(String[] args) {
 		System.out.println(ClassLoader.getSystemClassLoader());
 		System.out.println(ClassLoader.getSystemClassLoader().getParent());

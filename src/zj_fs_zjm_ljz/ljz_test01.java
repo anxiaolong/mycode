@@ -4,7 +4,7 @@ package zj_fs_zjm_ljz;
  * @author Administrator
  *
  */
-public class lzj_test01 {
+public class ljz_test01 {
 	static {
 		System.out.println("lzj_test01µÄstatic¿é");
 	}

@@ -1,18 +1,20 @@
 package zj_fs_zjm_ljz;
 /**
- * 自定义文件系统类加载器
+ * 自定义网络加载器
+ * 把文件系统 修改为URL即可
  */
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 
-public class Ljz_FileSystemClassLoader extends ClassLoader {
-	//d:/myjava/  com/bjsxt/test/User.class
-	private String rootDir;
+public class Ljz_NetClassLoader extends ClassLoader {
+	//www.sxt.cn/myjava/  com/bjsxt/test/User.class
+	private String rootUrl;
 	
-	public Ljz_FileSystemClassLoader(String rootDir) {
-		this.rootDir = rootDir;
+	public Ljz_NetClassLoader(String rootUrl) {
+		this.rootUrl = rootUrl;
 	}
 	
 	@Override
@@ -48,12 +50,13 @@ public class Ljz_FileSystemClassLoader extends ClassLoader {
 	}
 	
 	private byte[] getClassData(String classname) {
-		String path = rootDir +"/"+classname.replace('.', '/')+".class";
+		String path = rootUrl +"/"+classname.replace('.', '/')+".class";
 
 		InputStream is = null;
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		try {
-			is = new FileInputStream(path);
+			URL url = new URL(path);
+			is = url.openStream();
 			
 			byte[] buffer = new byte[1024];
 			int temp = 0;

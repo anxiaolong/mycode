@@ -7,7 +7,7 @@ package gof23;
 public class Singleton_test03 {
 	private static Singleton_test03 instance = null;
 	
-	public Singleton_test03 getIntance() {
+	public static Singleton_test03 getInstance() {
 		if (instance==null) {
 			Singleton_test03 sc;
 			synchronized (Singleton_test03.class) {

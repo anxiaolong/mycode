@@ -13,7 +13,7 @@ public class Singleton_test04 {
 	private Singleton_test04() {}
 	
 	//方法没有线程同步，调用效率高
-	public Singleton_test04 getInstance() {
+	public static Singleton_test04 getInstance() {
 		return SingletonClassInstance.instance;
 	}
 }

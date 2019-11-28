@@ -12,6 +12,9 @@ public class ProxyDynamic_Client {
 		ProxyDynamic_Star proxy = (ProxyDynamic_Star) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(),
 				new Class[] {ProxyDynamic_Star.class}, handler);
 		
+		//proxy对象没执行一个方法，就回调用一次handler的invoke方法
+		//代理处理的逻辑全部放在invoke方法中
 		proxy.sing();
+		proxy.bookTicket();
 	}
 }

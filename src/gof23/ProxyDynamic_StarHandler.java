@@ -21,10 +21,13 @@ public class ProxyDynamic_StarHandler implements InvocationHandler {
 		
 		if (method.getName().equals("sing")) {
 			object = method.invoke(realStar, args);
+		} else {
+			System.out.println("ProxyStart负责执行相关操作");
 		}
 		
 		System.out.println("真正的方法执行后");
 		System.out.println("收尾款");
+		System.out.println("#############################");
 		
 		return object;
 	}

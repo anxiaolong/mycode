@@ -39,6 +39,5 @@ public class JsoupTest {
 			bw.write(parameter+"½á¹û£º"+rsp.statusCode()+" "+rsp.body()+"\n");
 			bw.flush();
 		}
-		
 	}
 }

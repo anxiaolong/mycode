@@ -42,3 +42,8 @@ fdfdfdffdfdf@fdfdffd.com.cio.cm"
 regex = (\w+@\w+)(.\w+){1,2}
 分析：匹配邮箱
 
+7.\s\S
+分析：/s是匹配空格、换行符、制表符，/S取的是它的反。
+\w\W \d\D 都有这种用法
+
+

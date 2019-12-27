@@ -1,5 +1,9 @@
+/api_test/
+/array/
+/chatroom/
 /collection/
 /cy_class/
+/datastructure/
 /exception/
 /gof23/
 /httpserver/
@@ -11,7 +15,3 @@
 /regex/
 /thread/
 /zj_fs_zjm_ljz/
-/api_test/
-/array/
-/chatroom/
-/datastructure/

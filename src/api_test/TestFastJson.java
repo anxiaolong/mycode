@@ -35,6 +35,10 @@ public class TestFastJson {
 		System.out.println(jsonObject.get("job"));
 		System.out.println(jsonObject.get("age"));
 		System.out.println(jsonObject.get("infos"));
+		List<String> list = (List<String>) jsonObject.get("infos");
+		for (String string : list) {
+			System.out.println(string);
+		}
 	}
 	
 	public static void main(String[] args) {

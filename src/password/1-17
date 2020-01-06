@@ -1,0 +1,65 @@
+1.jdk和jre的区别？
+@：
+jdk：是java development kit的简称，java开发工具包。
+jre：是java runtime environment的简称，java运行环境。
+关系：jdk包含jre，还包含java编译器，java调试工具等。
+
+2.==和equals的区别是什么？
+@：
+== ：基本类型比较的是值是否相等，应用类型比较的是引用是否相等。
+equals：默认是对象的引用比较，如何需要进一步比较需要重写对象的equals和hashCode方法。
+
+3.两个对象的hashCode()相同，equals()一定为true吗？
+@：
+不一定。"通话" "重地"，这个两个字符串hashCode相同。
+hashCode相同不能推算出散列表中键值对也相同。
+
+4.final在java中的作用？
+@：
+final修饰类：该类不能被继承，是最终类。
+final修饰方法：不能被重写。
+final修饰变量：必须初始化，且不能被修改。
+
+5.Math.round(-1.5)等于多少？
+@：
+-1
+
+6.String属于基础类型吗？
+@：
+不属于，属于引用类型。
+基本类型：byte boolean int short lang double float char。
+
+7.java中字符串操作的类有哪些？
+@：
+String StringBuilder StringBuffer
+String：不能操作字符串，创建之后不能改变
+StringBuilder：可操作字符串，线程不安全，操作效率高
+StringBuffer:可操作字符串，线程安全，操作效率低
+单线程环境使用StringBuilder，多线程环境使用StringBuffer
+
+8.String s ="i"和String s = new String("s")有什么区别？
+@：
+s="i"会被jvm分配到常量池中，new String("i")会被放到堆内存中。
+
+9.如何将字符串反转？
+@:
+StringBuilder和StringBuffer类下面的reverse()方法。
+
+
+10.String常用方法有哪些？
+@：
+substring()截取字符串
+split()分割字符串，并返回字符串数组
+toLowerCase()转化为小写
+toUpperCase()转化为大写
+indexOf()返回字符的下标
+charAt()返回下标的字符
+replace()替换字符或字符串，返回一个新字符串
+trim()去掉前后空格
+getBytes()转为字节数组
+length()获取长度
+equals()字符串比较
+
+
+
+

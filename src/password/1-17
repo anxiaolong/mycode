@@ -66,5 +66,43 @@ equals()字符串比较
 
 12.普通类和抽象类有什么区别？
 @：
+普通类不能包含抽象方法，抽象类可以包含抽象方法。
+普通类可以直接创建实例，抽象类不能直接创建实例。
 
+13.抽象类可以使用final修饰吗？
+@：
+不能，抽象类主要拿来被继承使用，
+final修饰的类不能被继承，相互矛盾。
+
+14.接口和抽象类有什么区别？
+@：
+实现方式：接口使用implements，抽象类使用extends。
+实现数量：一次可以实现多个接口，只能继承一个抽象类。
+构造方法：接口不能有构造方法实现，抽象类可以有具体的方法实现。
+main方法：接口不能有main方法，抽象类可以有main方法。
+访问修饰符：接口默认为pubilic，抽象类方法可以是任意的修饰符。
+
+15.java中IO流分为几种？
+@：
+按功能：输入流input，输出流output
+按类型：字节流和字符流
+字节流按8位进行字节的输入输出，字符按16位进行字符的输入输出。
+
+16.BIO、NIO、AIO有什么区别？
+@：
+BIO：Block IO，同步阻塞式IO，普通使用的IO，模式简单使用方便，并发处理能力低。
+NIO：New IO，同步非阻塞式IO，BIO的升级，客户端和服务端通过channel通信，实现了多路复用。
+AIO:Asynchronous IO,异步非阻塞IO，NIO的升级，异步IO的操作通过事件和回调机制。
+
+17.Files的常用方法有哪些？
+@：
+Files.exists() 是否存在Path
+Files.createFile() 创建文件
+Files.createDirectory() 创建文件夹
+Files.delete() 删除文件
+Files.copy() 复制文件
+Files.move() 移动文件
+Files.size() 文件及子文件大小 单位byte
+Files.readAllBytes() 文件转位字节数组
+Files.write() 字节数组输出为文件
 

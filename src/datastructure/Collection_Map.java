@@ -3,9 +3,10 @@ package datastructure;
  * HashMap存储的数据是无序的，使用散列表和单链表实现
  * LinkedHashMap是HashMap的子类，储存的数据是有序的，按put的顺序，内部实现使用了双向链表
  * TreeMap会自动排序，key值从小到大排序，内部使用红黑二叉树实现
- * 
+ * HashTable相对HashMap是线程安全的，操作效率低
  */
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -47,6 +48,17 @@ public class Collection_Map {
 			System.out.println(temp);
 		}
 		for (Iterator<Entry<String, String>> iterator=set3.iterator();iterator.hasNext();) {
+			Entry<String, String> temp = iterator.next();
+			System.out.println(temp);
+		}
+		
+		//HashTable相对于HashMap线程安全，操作效率低
+		Map<String, String> map4 = new Hashtable<String, String>();
+		map4.put("fdf", "fdfdf");
+		map4.put("1fdf", "fdfdf");
+		map4.put("2fdf", "fdfdf");
+		Set<Entry<String, String>> set4 = map4.entrySet();
+		for (Iterator<Entry<String, String>> iterator=set4.iterator();iterator.hasNext();) {
 			Entry<String, String> temp = iterator.next();
 			System.out.println(temp);
 		}

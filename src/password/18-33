@@ -1,0 +1,12 @@
+18.常用的容器有哪些？
+@：
+List：ArrayList,Vector,Stack,LinkedList。
+Map:HashMap,LinkedHashMap,TreeMap,HashTable。
+Set:HashSet,LinkedHashSet,TreeSet。
+Queue:LinkedList,PriorityQueue
+
+19.Collection和Collections有什么区别？
+@：
+Collection是容器接口
+Collections是操作容器的一个工具类
+

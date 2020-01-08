@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.Map.Entry;
 
-public class Collection_Test01 {
+public class Collection_Map {
 	public static void main(String[] args) {
 		//TreeMap会自动排序，key值从小到大排序
 		//内部使用红黑二叉树实现

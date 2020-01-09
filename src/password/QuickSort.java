@@ -1,6 +1,8 @@
 package password;
 /**
  * 快速排序算法
+ * 最好的情况是，每次正好中分，复杂度为O(nlogn) 
+ * 最差情况，复杂度为O(n^2)
  */
 import java.util.Arrays;
 

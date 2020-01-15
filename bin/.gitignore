@@ -4,6 +4,7 @@
 /collection/
 /cy_class/
 /datastructure/
+/db.properties
 /exception/
 /gof23/
 /httpserver/
@@ -11,8 +12,8 @@
 /jdbc/
 /net/
 /oop/
+/password/
 /pro01/
 /regex/
 /thread/
 /zj_fs_zjm_ljz/
-/password/

@@ -49,7 +49,7 @@ public class Test_String {
 	@Test
 	@DisplayName("方法执行超时测试")
 	void testTimeOut() {
-		assertTimeoutPreemptively(Duration.of(3, ChronoUnit.SECONDS), ()->{
+		assertTimeout(Duration.of(2, ChronoUnit.SECONDS), ()->{
 			testString.startsWith("an");
 			Thread.sleep(2000);
 		});

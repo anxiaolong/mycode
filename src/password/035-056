@@ -33,6 +33,34 @@ Runable接口run方法没有返回值，Callable中call方法有一个支持泛型的返回值。
 
 41.sleep()和wait()有什么区别？
 @：
+sleep()是Thread类的静态方法，wait()是Object类的方法。
+sleep()不会释放线程锁。wait()方法会释放线程锁，再用notify()和notifyAll()唤起等待的线程。
+
+42.notify()和notifyAll()有什么区别？
+@：
+notify()是随机唤起一个wait的线程，
+notifyAll()是唤起所有wait状态的线程来竞争释放出的线程锁。
+
+43.线程的run()和start()有什么区别？
+@：
+start()方法才是开启一个新线程，运行线程体run()里面的代码。
+run()只是一个普通的方法，再多线程时候被调用了。
+
+44.创建线程池有哪几种方式？
+@：
+newFixedThreadPool() 定长线程池。
+newCachedThreadPool() 缓存线程池。
+newSingleThreadExecutor() 单线程池。
+newScheduledThreadPool() 周期线程池。
+
+45.线程池有哪些状态？
+@：
+
+
+
+
+
+
 
 
 

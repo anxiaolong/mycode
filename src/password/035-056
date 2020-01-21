@@ -55,11 +55,22 @@ newScheduledThreadPool() 周期线程池。
 
 45.线程池有哪些状态？
 @：
+Running,ShutDown,Stop,Tidying,Terminated。
 
+46.线程池中submit()和execute()有什么区别？
+@：
+接收的参数不一样。
+submit()有返回值，execute()没有返回值。
+submit()方便异常处理。
 
+47.再java中如何保证多线程的运行安全？
+@：
+原子性：同一时间只能有一个线程对数据进行操作（atomic，synchronized）。
+可见性：一个线程对内存的修改，可以及时被其他线程所看到(synchronized,volatile)。
+有序性：一个线程观察其他线程的指定顺序，由于指令重排序，一般观察是无序的，
+(happends-before原则：前一个指令操作结果，必须后续操作可见，否则不能指令重排序)。
 
-
-
+48.
 
 
 

@@ -1,11 +1,9 @@
-package api_test;
-/**
- * 咪咕音乐门户链接检查测试脚本
- * @author 安小龙
- */
+package test;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -16,8 +14,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.Scanner;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,8 +27,26 @@ import org.jsoup.Jsoup;
 import org.jsoup.Connection.Method;
 import org.jsoup.Connection.Response;
 
+
 public class GetAllUrl {
-	public static CopyOnWriteArrayList<String> miguUrl = new CopyOnWriteArrayList<String>();
+	public static CopyOnWriteArraySet<String> miguUrl = new CopyOnWriteArraySet<String>();
+	public static SimpleDateFormat dateFormat;
+	public static Date date;
+	public static FileOutputStream fos;
+	public static BufferedWriter bw;
+	public static PrintWriter pw;
+	static {
+		dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		date = new Date();
+		try {
+			fos = new FileOutputStream(new File("c:/test/"+dateFormat.format(date)+"-getResult"));
+			bw = new BufferedWriter(new OutputStreamWriter(fos));
+			pw = new PrintWriter(new File("c:/test/"+dateFormat.format(date)+"-getError"));
+		} catch (FileNotFoundException e) {
+			System.out.println("c:/test/"+" 路径没有建好");
+		}
+	}
+	
 //	static {
 //		IgnoreCertTest.ingnoreCertificates();
 //	}
@@ -57,11 +76,14 @@ public class GetAllUrl {
 		return result;
 	}
 	
-	public static int getUrl(String url) throws Exception {
+	public static String getUrl(String url) throws Exception {
 		Connection conn = Jsoup.connect(url)
 				.method(Method.GET).ignoreContentType(true);
+		long start = System.currentTimeMillis();
 		Response rsp = conn.execute();
-		return rsp.statusCode();
+		long end = System.currentTimeMillis();
+		System.out.println("响应时间："+(end-start)+"ms");
+		return rsp.statusCode()+"-->"+(end-start)+"ms";
 	}
 	
 	//向miguUrl中存入咪咕的链接
@@ -71,58 +93,44 @@ public class GetAllUrl {
 		//获取源码里面的链接
 		List<String> result = getMatherSubstrs(destStr, "href=\"([\\w\\s./:]+?)\"");
 		
-		//链接补全，并存入新的list中
-		List<String> link = new ArrayList<String>();
+		//链接补全，并存入
 		for (String temp : result) {
 			if (temp.startsWith("//")) {
 				String newString = "http:"+temp;
-				link.add(newString);
+				miguUrl.add(newString);
+				System.out.println("爬取："+newString);
 			} else if (temp.startsWith("/")) {
 				String newString = "http://music.migu.cn"+temp;
-				link.add(newString);
+				miguUrl.add(newString);
+				System.out.println("爬取："+newString);
 			} else {
-				link.add(temp);
-			}
-		}
-		
-		//遍历link，存入miguUrl并去重
-		for (String string : link) {
-			if (!miguUrl.contains(string)) {
-				miguUrl.add(string);
+				miguUrl.add(temp);
+				System.out.println("爬取："+temp);
 			}
 		}
 	}
 	
-	public static void nextLevel(int depth) {
+	public static void nextLevel(int depth) throws InterruptedException {
+		System.out.println("开始二级链接爬取");
+		Thread.sleep(3000);
 		for (int i = 0; i < depth; i++) {
 			for (String string : miguUrl) {
-				if (string.startsWith("http://music.migu.cn")||string.contains("i.migu.cn")) {
+				if (string.startsWith("http://music.migu.cn")) {
 					urlTolist(string);
 				}
 			}
 		}
 	}
 	
-	public static void main(String[] args) throws Exception {
+	public static void singleThreadRun() throws InterruptedException {
+		CountDownLatch latch = new CountDownLatch(miguUrl.size());	
+		ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
 		
-		urlTolist("http://music.migu.cn/v3");
-		nextLevel(1);
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = new Date();
-		System.out.println();
-		
-		FileOutputStream fos = new FileOutputStream(new File("c:/test/"+dateFormat.format(date)+"-getResult"));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
-		PrintWriter pw = new PrintWriter(new File("c:/test/"+dateFormat.format(date)+"-getError"));
-		
-		int count = 0;
-		CountDownLatch latch = new CountDownLatch(miguUrl.size());
 		for (String string : miguUrl) {
-			new Thread(new Runnable() {
-				
+			singleThreadExecutor.execute(new Runnable() {
 				@Override
 				public void run() {
+					System.out.println("get地址："+string);
 					try {
 						bw.write((new Date())+"-->get结果-->"+getUrl(string)+"-->url-->"+string+"\r\n");
 						bw.flush();
@@ -135,14 +143,60 @@ public class GetAllUrl {
 					} 
 					latch.countDown();
 				}
-			}).start();
-			count++;
+			});
+		}
+		latch.await();
+	}
+	
+	public static void allThreadRun() throws InterruptedException {
+		CountDownLatch latch = new CountDownLatch(miguUrl.size());
+		ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
+		
+		for (String string : miguUrl) {
+				fixedThreadPool.execute(new Runnable() {
+					@Override
+					public void run() {
+						System.out.println(Thread.currentThread().getName()+" get地址："+string);
+						try {
+							bw.write((new Date())+"-->get结果-->"+getUrl(string)+"-->url-->"+string+"\r\n");
+							bw.flush();
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							pw.write((new Date())+"-->"+string+"\r\n");
+							e.printStackTrace(pw);
+							pw.write("#######################分界#########################################"+"\r\n");
+							pw.flush();
+						} 
+						latch.countDown();
+					}
+				});
 		}
 		
 		latch.await();
-		System.out.println(count+"条数据");
+	}
+	
+	public static void main(String[] args) throws Exception {
+		System.out.println("请输入检查项：1主界面链接(数量少，时间快)  2主界面链接及其下级链接(数量多，时间慢)");
+		Scanner scanner = new Scanner(System.in);
+		int test1 = scanner.nextInt();
+		System.out.println("测试项"+test1);
+		System.out.println("请输入是否多线程执行：1单线程 2多线程");
+		int test2 = scanner.nextInt();
+		scanner.close();
+		System.out.println(test2+"开始执行");
 		
-		bw.close();
 		
+		urlTolist("http://music.migu.cn/v3");
+		if (test1==2) {
+			nextLevel(1);
+		}
+		
+		if (test2==1) {
+			singleThreadRun();
+		}else if (test2==2) {
+			allThreadRun();
+		} 
+		
+		System.out.println(miguUrl.size()+"条数据");
 	}
 }

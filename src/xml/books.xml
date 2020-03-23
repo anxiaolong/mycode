@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 引入外部DTD -->
+<!DOCTYPE book SYSTEM "books.dtd">
+
+<books>
+	<book id="1">
+		<name>JAVA入门</name>
+		<author>李达</author>
+		<price>98</price>
+	</book>
+	<book id="2">
+		<name>C语言</name>
+		<author>德国</author>
+		<price>928</price>
+	</book>
+</books>

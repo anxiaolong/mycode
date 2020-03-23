@@ -20,4 +20,9 @@
 		<course>数学</course>
 		<score>46</score>
 	</student>
+	<student id="2">
+		<name>王里</name>
+		<course>C++</course>
+		<score>46</score>
+	</student>
 </scores>

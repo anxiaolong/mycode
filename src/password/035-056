@@ -93,6 +93,25 @@ ThreadLocal类是为了实现线程局部变量，是一种实现线程安全的方式。
 
 52.说下synchronized底层实现原理？
 @：
+保证同一时间只有一个方法操作对象，并且保证共享变量的内存可见性。
+对象锁也是synchronized实现的基础：
+普通同步方法，锁是当前实例对象。
+静态同步方法，锁是当前类的class对象。
+同步方法块，锁是方法块里面的对象。
+
+53.synchronized和 volatile 的区别是什么？
+@：
+volatile只能修饰变量，synchronized可以修饰变量、方法和类。
+
+54.sychronized和Lock有什么区别？
+@：
+synchronized是java关键字，Lock是一个类。
+synchronized无法判断是否获取锁，Lock可以判断是否获取到锁。
+synchronized会自动释放锁，Lock需要在finally中手动释放锁。
+synchronized获取不到锁会一直等待，Lock获取不到锁会自动结束。
+synchronieed适合少量代码同步，Lock适合大量代码同步的场景。
+
+
 
 
 

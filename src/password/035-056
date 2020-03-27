@@ -111,10 +111,18 @@ synchronized会自动释放锁，Lock需要在finally中手动释放锁。
 synchronized获取不到锁会一直等待，Lock获取不到锁会自动结束。
 synchronieed适合少量代码同步，Lock适合大量代码同步的场景。
 
+55.synchronized 和 ReentrantLock 区别是什么？
+@：
+synchronized是关键字，TeentrantLock是类，功能可以更加灵活。
+ReentrantLock可以对获取锁的等待时间进行设置，这样就避免了死锁 
+ReentrantLock可以获取各种锁的信息
+ReentrantLock可以灵活地实现多路通知 
 
 
+56. 说一下atomic的原理？
+@：
+Atomic包中的类基本的特性就是在多线程环境下，
+当有多个线程同时对单个（包括基本类型及引用类型）变量进行操作时，
+具有排他性，即当多个线程同时对该变量的值进行更新时，
+仅有一个线程能成功，而未成功的线程可以向自旋锁一样，继续尝试，一直等到执行成功。
 
-
-
-	
-	

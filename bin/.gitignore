@@ -6,8 +6,6 @@
 /datastructure/
 /exception/
 /gof23/
-/httpserver/
-/io/
 /jdbc/
 /junit/
 /net/
@@ -18,3 +16,5 @@
 /thread/
 /xml/
 /zj_fs_zjm_ljz/
+/httpserver/
+/io/

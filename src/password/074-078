@@ -1,0 +1,39 @@
+74.throw和throws的区别？
+@：
+throws是用来声明一个方法所有可能出现的异常类型，但是不处理异常。
+throw是用来抛出一个具体的异常类型。
+
+75.final、finally、finalize有什么区别？
+@：
+final修饰类表示该类不可继承，修饰方法时方法不能被重写，修饰变量时变量不可被重新赋值。
+finally一般用于tyr-catch之后，finally里面的语句一定回被执行，一般这里写回收资源的代码。
+finalize时Object类的一个方法，垃圾回收器回收资源一般会调用finalize回收垃圾。
+
+76.try-catch-finally中哪个部分可以省略？
+@：
+catch部分可以省略。
+catch部分时处理异常，不处理也可以，try-finally也能正常运行。
+
+77.try-catch-finally如何在catch中return了，finally中的代码还会执行吗？
+@：
+会执行，会在return前执行。下面方法返回值是666。
+public static int test1() {
+		int a = 10;
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(new File("dfdf/fdfdf")));
+		} catch (Exception e) {
+			return a;
+		} finally {
+			a = 666;
+			System.out.println("I am run");
+			return a;
+		}
+	}
+
+78.常见的异常类有哪些？
+@：
+NullPointerException
+IndexOutOfBoundsException
+FileNotFoundException
+IOException
+

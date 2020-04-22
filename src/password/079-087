@@ -45,6 +45,12 @@ get智能接受ascii字符，post没有限制。
 get不安全，参数暴露在url上，敏感信息传递不用get。
 get参数通过url传递，post方request body中。
 
+86.如何实现跨域？
+@：
+
+
+87.JSONP实现得原理？
+@:
 
 
 

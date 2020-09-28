@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表格标签table学习</title>
+	</head>
+	<body>
+		<h3>table表格</h3>
+		<hr>
+		<h4>表格标签常用属性设置：</h4>
+		<table width="40%" border="1px" cellpadding="20px" cellspacing="0px">
+			<tr height="50px">
+				<th width="100px">id</th>
+				<th width="100px">name</th>
+				<th width="100px">sex</th>
+				<th width="100px">age</th>
+			</tr>
+			<tr height="50px">
+				<td>001</td>
+				<td>Jeane</td>
+				<td>f</td>
+				<td>24</td>
+			</tr>
+			<tr height="50px">
+				<td>002</td>
+				<td>kevin</td>
+				<td>m</td>
+				<td>32</td>
+			</tr>
+		</table><br>
+		<hr>
+		<h4>表格单元格合并：</h4>
+		<table width="40%" border="1px" cellpadding="20px" cellspacing="0px">
+			<tr height="30px">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td rowspan="2"></td>
+			</tr>
+			<tr height="30px">
+				<td colspan="2"></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr height="30px">
+				<td></td>
+				<td></td>
+				<td colspan="2" rowspan="2"></td>
+				<td></td>
+			</tr>
+			<tr height="30px">
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table><br>
+		<hr>
+		
+		<pre>
+			表格标签学习:
+		table :声明一个表格
+			tr:声明一行,设置行高及改行所有单元格的高度.
+				th:声明一个单元格,表头格.默认居中加黑显示
+				td:声明一个单元格,默认居左显示原始数据
+			注意:
+				行高即改行所有单元格的宽度
+				单元格的宽度即列宽
+		属性:
+			border:给表格添加边框
+			width:设置表格的宽度
+			height:设置表格的高度
+			cellpadding:设置内容居边框的距离
+			cellspacing:设置边框的大小	
+		特点:
+			默认根据数据的多少进行表格的大小显示
+		单元格的合并:
+			第一步:
+				首先确保表格是一个规整的表格
+			第二步:
+				根据要合并的单元格,找到其所在的源码位置
+			第三步:
+				行合并:在要合并的单元格中的第一个单元格上使用属性rowspan="要合并的单元格的个数",并删除其他要合并的单元格完成合并
+				列合并:在要合并的单元格中的任意一个上使用属性colspan="要合并的单元格的个数",并删除要合并的其他单元格
+		</pre>
+		
+	</body>
+</html>

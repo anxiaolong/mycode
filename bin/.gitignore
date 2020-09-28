@@ -7,6 +7,7 @@
 /db.properties
 /exception/
 /gof23/
+/html/
 /httpserver/
 /io/
 /jdbc/
@@ -19,4 +20,3 @@
 /thread/
 /xml/
 /zj_fs_zjm_ljz/
-/html/

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>框架标签frame</title>
+	</head>
+	
+	<frameset rows="30%,*,30%">
+		<frame src="05-img图片标签.html">
+		<frameset cols="50%,*">
+			<frame src="11-a标签调用frame.html">
+			<frame src="07-表格标签table.html" name="_new">
+		</frameset>
+		<frame src="https://www.baidu.com/">
+	</frameset>
+	
+	<!-- 
+		注意:
+		第一步一定要删除body标签
+		框架标签学习:
+			frameset
+				rows:按照行进行切分页面
+				cols:按照列进行切分页面
+				子标签:
+					frame:进行切分区域的占位,一个frame可以单独加载网页资源.
+						src:资源路径(本地或者网络)
+						name:区域名,结合超链接使用
+	 -->
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css样式的使用</title>
+		<style type="text/css">
+			/*添加网页背景图*/
+			body{
+				background-image:url(03-01img.jpg);
+				background-size:cover;/*设置图片平铺*/
+				background-repeat:no-repeat;/*设置图片不重复，这里没用上*/
+			}
+			/*给表格加样式*/
+			table{
+				background-color:yellow;
+			}
+			tr{
+				height:40px;/*设置行高*/
+			}
+			td{
+				width:100px;/*设置列宽*/
+				border:solid 1px blue;/*设置边框和颜色*/
+				border-radius:5px;/*设置边框弧度*/
+				background-color:green;
+				text-align:center;/*设置文本位置*/
+				color:white;/*设置文本颜色*/
+				font-weight:bold;/*文本加粗*/
+				letter-spacing:10px;/*设置字体间距*/
+			}
+			/*给列表加样式*/
+			ul{
+				background-color:gray;
+				height:50px;
+			}
+			li{
+				list-style-type:none;/*去掉列表标识*/
+				float:left;/*设置菜单左悬浮*/
+			}
+			li a{
+				color:black;
+				text-decoration:none;/*去除链接下划线*/
+				font-weight:bold;
+				font-size:20px;
+				margin-left:20px;/*设置a的左外边距*/
+				position:relative;/*元素设置为相对位置，为设置top准备*/
+				top:10px;/*距离顶部距离，相对正常位置而言*/
+			}
+		</style>
+	</head>
+	<body>
+		<h3>css样式的使用</h3>
+		<hr>
+		<table>
+			<tr>
+				<td>id</td>
+				<td>name</td>
+				<td>age</td>
+			</tr>
+			<tr>
+				<td>001</td>
+				<td>Jack</td>
+				<td>23</td>
+			</tr>
+			<tr>
+				<td>002</td>
+				<td>Frack</td>
+				<td>32</td>
+			</tr>	
+		</table>
+		<hr>
+		<ul>
+			<li><a href="">首页</a></li>
+			<li><a href="">音乐</a></li>
+			<li><a href="">视频</a></li>
+			<li><a href="">直播</a></li>
+		</ul>
+	</body>
+</html>

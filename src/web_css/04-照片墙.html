@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>照片墙</title>
+		<style type="text/css">
+			body{
+				text-align:center;
+				background-color:gray;
+			}
+			img{
+				width:12%;
+				padding:10px;
+				background-color:white;
+				transform:rotate(-10deg);/*设置倾斜角度*/
+				margin:20px;/*设置外边框距*/
+			}
+			/*
+			使用伪类给标签添加样式
+			在支持 CSS 的浏览器中，链接的不同状态都可以不同的方式显示，
+			这些状态包括：活动状态，已被访问状态，未被访问状态，和鼠标悬停状态。
+			a:link	          未访问的链接 
+			a:visited 	已访问的链接 
+			a:hover 	鼠标移动到链接上
+			a:active 	选定的链接
+			*/
+			img:hover{
+				transform:rotate(0deg) scale(1.5);/*设置旋转角度和缩放比例*/
+				z-index:1;/*设置显示优先级*/
+				transition:1.5s;/*设置加载时间*/
+			}
+		</style>
+	</head>
+	<body>
+		<h3>照片墙</h3>
+		<hr>
+		<img alt="" src="04-1.jpg">
+		<img alt="" src="04-2.jpg">
+		<img alt="" src="04-3.jpg">
+		<img alt="" src="04-4.jpg"><br>
+		<img alt="" src="04-5.jpg">
+		<img alt="" src="04-6.jpg">
+		<img alt="" src="04-7.jpg">
+		<img alt="" src="04-8.jpg">
+	</body>
+</html>

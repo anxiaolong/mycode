@@ -7,7 +7,6 @@
 /db.properties
 /exception/
 /gof23/
-/html/
 /httpserver/
 /io/
 /jdbc/
@@ -18,8 +17,7 @@
 /pro01/
 /regex/
 /thread/
+/web_css/
+/web_html/
 /xml/
 /zj_fs_zjm_ljz/
-/css/
-/web_html/
-/web_css/

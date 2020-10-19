@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css定位</title>
+		<style type="text/css">
+			#div01{
+				border:solid 2px orange;
+				width:800px;
+				height:200px;
+				margin-bottom:10px;/*设置底部距离另外一个元素的像素距离*/
+				margin-top:50px;
+				margin-left:20px;
+				position:relative;/*给div01添加相对定位，作为其子元素绝对定位的参照*/
+			}
+			#showdiv{
+				border:solid 3px;
+				width:50px;
+				height:50px;
+				position:absolute;/*子元素设置为绝对定位*/
+				top:10px;
+			}
+			#div02{
+				border:solid 3px blue;
+				width:800px;
+				height:200px;
+				margin-bottom:10px;
+				position:relative;
+				left:50px;
+				top:50px;
+				background-color:coral;
+				z-index:3;
+			}
+			#div03{
+				border:solid 3px #45C789;
+				width:800px;
+				height:200px;
+				background-color:gray;
+				position:relative;
+				z-index:4;/*设置元素的显示层级，z轴数值越大越在上*/
+			}
+			#div04{
+				border:solid 3px red;
+				width:50px;
+				height:50px;
+				position:fixed;/*固定定位，相对于浏览器窗口定位*/
+				right:10px;
+				top:270px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div01">
+			<div id="showdiv"></div>
+		</div>
+		<div id="div02">div02</div>
+		<div id="div03">div03</div>
+		<div id="div04">div04</div>
+	</body>
+	<!--
+			css的定位学习：
+				position
+					相对定位:relative
+						作用：相对元素原有位置移动指定的距离(相对的自己的原有位置)
+							可以使用top,left,right,bottom来进行设置。
+						注意：
+							其他元素的位置是不改变的。
+					绝对定位:absolute
+						作用：可以使用元素参照界面或者相对父元素来进行移动 	
+						注意：
+							如果父级元素成为参照元素，必须使用相对定位属性
+							默认情况下是以界面为基准进行移动的。
+					固定定位:fixed
+						作用：将元素固定现在页面的指定位置，不会随着滚动条的移动而改变位置。
+					以上定位都可以使用top,left,right,bottom来进行移动。
+				z-index:此属性是用来声明元素的显示级别的。
+		-->
+</html>

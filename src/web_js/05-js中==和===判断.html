@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js中==和===判断</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*声明变量*/
+			var a=1;
+			var a1="1";
+			var a2=true;
+			var a3="true";
+			var a4="a";
+			var a5="a";
+			var a6;
+			
+			alert(Number(a1));
+			alert(Number(a2));
+			alert(Number(a3));//NaN
+			alert(Number(a4));//NaN
+			alert(Number(a5));//NaN
+			
+			alert(null==a6);//true
+			
+			//==同类型直接比较，不同类型Number()强转后比较
+			/*alert(a==a1);//true
+			alert(a==a2);//true
+			alert(a==a3);//false
+			alert(a1==a2);//true
+			alert(a1==a3);//false
+			alert(a2==a3);//false
+			alert(a4==a5);//true*/
+			
+			//===同类比较，不同类型直接返回false
+			alert('a'==="a");//true
+			alert(1==="1");//false
+		</script>
+		
+		<!--
+			等值运算符:==
+				先判断类型，类型一致则直接比较。
+						类型不一致，则先使用Number()进行强转后再进行比较。
+			等同运算符:===
+				先判断类型，类型一致则再比较内容，内容一致则返回true，内容不一致则返回false。
+						类型不一致则直接false
+			注意：
+				null和undefined在做==判断时候返回true			
+		-->
+	</body>
+</html>

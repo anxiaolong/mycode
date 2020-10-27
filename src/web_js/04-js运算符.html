@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js运算符</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*算术运算*/
+			var a1=3;
+			var a2=34;
+			var a3="tst";
+			var a4=true;
+			//alert(a1+a4);
+			/*逻辑运算符*/
+			var b1=true;
+			var b2=false;
+			alert(b1&b2);
+			alert(b1&&b2);
+			alert(b1|b2);
+			alert(b1||b2);
+		</script>
+		
+		<!--
+			js的运算符学习：	
+				算术运算符：
+					加法：+
+					减法：-
+					乘法：*
+					除法：/
+					余数：%
+						number类型的和number类型的
+						number类型和boolean类型(true--1,false--0)
+						number类型和string类型(*,/,%,-)
+						string类型和string类型的数字(*,/,%,-)
+						string类型数字和boolean类型(*,/,%,-)
+					在算术运算中如果两边的数据类型不是number的话，会使用Number()强转后在进行运算.
+				字符串的加法会作为字符链接，不会运算。
+					注意：
+					在字符串中“+”符合代表的是字符串的连接符，不会参与运算
+				逻辑运算符：
+					!  & && | || (与java中的一致);
+					var a=true;
+					var b=true;//false
+					alert(a&b);
+					if(a&b){
+						alert("haha");
+					}
+				关系运算符：返回值为true 或者fasle
+					!=:
+					>=:
+					<=:
+					>:
+					<:
+				自增运算符：
+					++:a++ ++a
+					--:
+					+=:
+					-=:			
+		-->
+	</body>
+</html>

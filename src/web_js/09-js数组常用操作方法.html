@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js数组常用操作方法</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//1.数组的合并
+			var arr1=[34,"dddd",909];
+			var t1="anxiaolong";
+			var arr3=["wdfdf","iudedef"];
+			var arr2=arr1.concat(arr1,t1,t1,t1,arr3);
+			//alert(arr2);
+			
+			//2.数组指定间隔符，把各个元素连接成字符串
+			var t2=arr2.join("-->");
+			//alert(t2);
+			
+			//3.数组移除最后一个元素并返回
+			var arr4=[343,"dfdfdf","dfdf",90090];
+			//alert(arr4.pop());
+			//alert(arr4);
+			
+			//4.数组追加一个返回长度
+			var arr5=[343,"dfdfdf","dfdf",90090];
+			//alert(arr5.push("anxiaolong"));
+			//alert(arr5);
+			
+			//5.数组移除第一个元素，返回值就是第一个元素
+			var arr6=[343,"dfdfdf","dfdf",90090];
+			//alert(arr6.shift());
+			//alert(arr6);
+			
+			//6.开始位置插入元素，返回的是数组的length
+			var arr7=[343,"dfdfdf","dfdf",90090];
+			//alert(arr7.unshift("anxiaolong"));
+			//alert(arr7);
+			
+			//7.删除指定位置元素，返回删除的数据
+			var arr8=[343,"dfdfdf","dfdf",90090];
+			//第一个参数是从哪个脚本开始删除，第二个参数是删除几个元素，第三个是添加到这个删除位置的元素
+			alert(arr8.splice(1,2,"aaaaa"));
+			alert(arr8);
+		</script>
+	</body>
+</html>

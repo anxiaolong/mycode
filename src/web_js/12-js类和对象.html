@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js类和对象</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//1.js类的申明
+			function Person(name,age){
+				this.name=name;
+				this.age=age;
+			}
+			Person.prototype.showp=function() {alert(this.name+"$$"+this.age);};
+			
+			//var p1=new Person("dfdf","ddfdf");
+			//alert(p1);
+			//p1.showp();
+			function Student(name,age,sid){
+				this.sid=sid;
+				Person.call(this,name,age);//通过call方法继承了父类的属性
+			}
+			Student.prototype=new Person();//prototype继承父类的方法
+			Student.prototype.shows=function() {alert(this.sid);};			
+			var s1=new Student("anxiaolong","dfdf","sid:234343434");
+			var s2=new Student("anxiaolong2","dfdf2","sid2:234343434");
+			alert(s1.name+" "+s1.age+" "+s1.sid);
+			s1.showp();	
+			s1.shows();
+		</script>
+		
+		<!--
+			js中的类学习：
+				1、类的声明:
+					function 类名(形参1，形参2……){
+						this.属性名1=形参1;
+						this.属性名2=形参2;
+						……
+						this.属性名=fn
+					}
+				2、类的使用:
+					var 对象名=new 类名(实参1，实参2……);
+					注意：
+						js中类的内容只是对象的公共部分，每个对象还可以自定义的进行扩充。
+				3、类的"继承"：prototype关键字
+				、	同过prototype关键字实现了不同对象之间的数据共享。
+					作用1:实现某个类的所有子对象的方法区对象的共享，节省内存		
+		-->
+	</body>
+</html>

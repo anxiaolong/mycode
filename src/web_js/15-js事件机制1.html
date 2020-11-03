@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>js事件机制1</title>
+	<script type="text/javascript">
+		//单击
+		function testClick(){
+			alert("单击");
+		}
+		//一个事件多个函数执行
+		function test(){
+			alert("多个函数执行");
+		}
+		//双击
+		function testDbclick(){
+			alert("双击");
+		}
+		//鼠标事件
+		function testOnmouseover(){
+			alert("鼠标悬停");
+		}
+		function testOnmousemove(){
+			alert("鼠标移动");
+		}
+		function testOnmouseout(){
+			alert("鼠标移除");
+		}
+		//页面加载事件
+		function testOnload(){
+			alert("加载事件");
+		}
+		//键盘事件
+		function testOnkeyup(){
+			alert("键盘弹起");
+		}
+		function testOnkeydown(){
+			alert("键盘按下");
+		}
+		//焦点事件
+		function testOnfocus(){
+			alert("获取焦点");
+		}
+		function testOnblur(){
+			alert("失去焦点");
+		}
+	</script>
+	
+	<style type="text/css">
+		#showdiv{
+			border:solid 1px;
+			width:300px;
+			height:200px;
+			background-color:green;
+		}
+		input[type=text]{
+			margin-top:20px;
+		}
+	</style>
+	</head>
+	<body onload="testOnload();">
+		<h3>js事件机制1</h3>
+		<hr>
+		<input type="button" name="" id="" value="单击" onclick="testClick();test();">
+		<input type="button" name="" id="dblclick" value="双击" ondblclick="testDbclick();" /><br>
+		<input type="text" value="测试键盘弹起" onkeyup="testOnkeyup();"><br>
+		<input type="text" value="测试键盘按下" onkeydown="testOnkeydown();"><br>
+		<input type="text" value="获取焦点" onfocus="testOnfocus();"/>
+		<input type="text" value="失去焦点" onblur="testOnblur();"/>
+		<hr>
+		<div id="showdiv" onmouseover="testOnmouseover();" onmousemove="testOnmousemove();"
+		 onmouseout="testOnmouseout();"></div>
+	</body>
+		<!--
+			js的事件机制：
+				解释：当我们的行为动作满足了一定的条件后，会触发某类事务的执行。
+				作用：主要是结合js的函数来使用。
+				内容:
+					1、单双击事件
+						单击：onclick    		当鼠标单击的时候会触发
+						双击：ondblclick		当鼠标双击的时候会被触发
+					2、鼠标事件
+						onmouseover			当鼠标悬停在某个HTML元素上的时候触发
+						onmousemove			当鼠标在某个HTML元素上移动的时候触发
+						onmouseout			当鼠标在某个HTML元素上移出的时候触发
+					3、键盘事件
+						onkeyup				当键盘在某个HTML元素上弹起的时候触发
+						onkeydown			当键盘在某个HTML元素上下压的时候触发
+					4、焦点事件
+						onfocus				当某个HTML元素获取焦点的时候触发
+						onblur				当某个HTML元素失去焦点的时候触发
+					5、页面加载事件			
+						onload				当页面加载成功后触发。
+				注意:
+					js中添加事件的第一种方式：
+						在HTML上直接使用事件属性进行添加，属性值为所监听执行的函数。
+					js中的事件只有在当前HTML元素上有效。
+					一个HTML元素可以添加多个不同的事件。
+					一个事件可以监听触发多个函数的执行,但是不同的函数要使用分号间隔
+		-->
+</html>

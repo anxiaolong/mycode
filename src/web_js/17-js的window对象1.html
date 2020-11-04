@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js中window对象1</title>
+		<script type="text/javascript">
+			//框体方法
+			function testAlert(){
+				var a=window.alert("警告框alert");
+				alert(a);
+			}
+			function testConfirm(){
+				var a=window.confirm("警告框confirm");
+				alert(a);
+			}
+			function testPrompt(){
+				var a=window.prompt("提示框");
+				alert(a);
+			}
+/*---------------------------------------------*/
+			//定时
+			var ds;
+			var jg;
+			function testSetTimeout(){
+				ds=window.setTimeout(function() {alert("定时2秒执行");},3000);
+			}
+			//间隔执行
+			function testSetInterval(){
+				jg=window.setInterval(function() {alert("间隔3秒执行")},3000);
+			}
+			//停止定时
+			function testClearTimeout(){
+				window.clearTimeout(ds);
+			}
+			function testClearInterval(){
+				window.clearInterval(jg);
+			}
+		</script>
+	</head>
+	<body>
+		<h3>js中window对象1</h3>
+		<hr>
+		<input value="警告框" type="button" onclick="testAlert();">
+		<input value="确认框" type="button" onclick="testConfirm();">
+		<input value="提示框" type="button" onclick="testPrompt();">
+		<hr>
+		<input value="定时执行" type="button" onclick="testSetTimeout();">
+		<input value="间隔执行" type="button" onclick="testSetInterval();">
+		<input value="停止定时" type="button" onclick="testClearTimeout();">
+		<input value="停止间隔" type="button" onclick="testClearInterval();">
+	</body>
+<!--
+	BOM浏览器对象模型：是规范浏览器对js语言的支持(js调用浏览器本身的功能)。
+	BOM的具体实现是window对象	
+	window对象使用学习：
+		1、window对象不用new，直接进行使用即可，类似Math的使用方式，window关键字可以省略不写。
+		2、框体方法
+			alert:警告框	提示一个警告信息，没有返回
+			confirm:确认框  提示用户选择一项操作（确定/取消）
+					点击确定 返回true
+					点击取消  返回false
+			prompt:提示框， 提示用某个信息的录入或者说收集
+					点击确定，返回当前用书录入的数据，默认返回空字符串
+					点击取消,返回null
+		3、定时和间隔执行方法
+			setTimeout:指定的时间后执行指定的函数
+						参数1：函数对象
+						参数2：时间，单位毫秒。
+						返回值：返回当前定时器的id
+			setInterval:每间隔指定的时间执行指定的函数
+						参数1：函数对象
+						参数2：时间，单位毫秒。
+						返回值：返回当前间隔器的id
+			clearTimeout:用来停止指定的定时器
+						参数：定时器的id								
+			clearInterval:用来停止指定的间隔器
+						参数：间隔器的id
+-->
+</html>

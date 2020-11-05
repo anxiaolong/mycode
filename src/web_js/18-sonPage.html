@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>子页面</title>
+	<script type="text/javascript">
+		//调用父页面的函数
+		function testFa(){
+			window.opener.testFather();
+		}
+		//倒计时关闭页面
+		function testClose(){
+			var span=document.getElementById("testSpan");
+			window.setInterval(function() {
+				span.innerHTML=span.innerHTML-1;
+				if(span.innerHTML==0){
+					window.close();
+				}
+			},1000)
+			
+		}
+	</script>
+	</head>
+	<body onload="testClose();">
+		<h3>子页面</h3>
+		<hr>
+		<b>页面还有<span id="testSpan" style="color:red;font-size:40px;">5</span>秒将关闭</b>
+		<hr>
+		<input type="button" value="调用父类函数" onclick="testFa();">
+		<input type="button" value="调试" onclick="testClose();">
+	</body>
+</html>

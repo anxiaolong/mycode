@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js的document对象</title>
+		<script type="text/javascript">
+			//document获取元素对象
+			function testByid(){
+				//通过id属性
+				var a=document.getElementById("inp1");
+				alert(a);
+			}
+			function testByname(){
+				//通过name属性,获取结果是一个集合
+				var b=document.getElementsByName("tname");
+				alert(b.length);
+			}
+			function testBytagname(){
+				//通过标签名，获取结果是一个集合
+				var c=document.getElementsByTagName("input");
+				alert(c.length);
+			}
+			function testByclass(){
+				//通过class属性
+				var d=document.getElementsByClassName("common");
+				alert(d.length);
+			}
+			
+			//间接获取对象
+			function test1(){
+				//先获取父级元素
+				var e=document.getElementById("showdiv");
+				var childs=e.childNodes;
+				alert(childs.length);
+			}
+			function test2(){
+				//先获取子元素
+				var f=document.getElementById("test2");
+				var div=f.parentNode;
+				alert(div.id);
+			}
+			function test3(){
+				//获取兄弟元素
+				var g=document.getElementById("test2");
+				var pre=g.previousSibling;
+				var nex=g.nextSibling;
+				alert(pre+"---"+nex);
+			}
+			
+		</script>
+	</head>
+	<body>
+		<h3>js的document对象</h3>
+		<input type="button" value="通过id获取html元素" onclick="testByid();">
+		<input type="button" value="通过name获取html元素" onclick="testByname();">
+		<input type="button" value="通过标签名获取html元素" onclick="testBytagname();">
+		<input type="button" value="通过classname获取html元素" onclick="testByclass();">
+		<hr>
+		<input type="button" value="先获父级元素再获取html元素" onclick="test1();">
+		<input type="button" value="先获子元素再获取html元素" onclick="test2();">
+		<input type="button" value="获取兄弟元素" onclick="test3();">
+		
+		<hr>
+		<input type="text" id="inp1" name="tname" value="...." class="common">
+		<input type="text" id="inp2" name="tname" value="...." class="common">
+		<input type="text" id="inp3" name="tname" value="...." class="common">
+		<hr>
+		<div id="showdiv">
+			<input id="test2" value="dfdf" type="checkbox">121
+			<input id="test3" value="dfdf" type="checkbox">1dfd
+			<input id="test4" value="dfdf" type="checkbox">454gf
+		</div>
+	</body>
+		<!--
+		document对象学习:
+			1、document对象的概念
+				浏览器对外提供的支持js的用来操作HTML文档的一个对象，此对象封存的HTML文档的所有信息。
+			2、使用document
+				获取HTML元素对象
+					直接获取方式：
+						通过id
+						通过name属性值
+						通过标签名
+						通过class属性值
+					间接获取方式：
+						父子关系
+						子父关系
+						兄弟关系
+		-->
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js操作html元素的内容</title>
+		<script type="text/javascript">
+			//获取元素内容
+			function getContext(){
+				var div=document.getElementById("showdiv");
+				alert(div.innerHTML);
+				alert(div.innerText);
+				var inps=document.getElementsByName("c");
+				for(i=0;i<inps.length;i++){
+					alert(inps[i].value+":"+inps[i].nextSibling.nodeValue);
+				}
+			}
+			//修改元素内容
+			function updateContext(){
+				var div=document.getElementById("showdiv");
+				alert(div.innerHTML);
+				//添加是html代码
+				div.innerHTML+="<input type='button' value='test'>";
+				alert(div.innerHTML);
+			}
+			function updateContext2(){
+				var div=document.getElementById("showdiv");
+				alert(div.innerText);
+				div.innerText+="<input type='button' value='test'>";
+				alert(div.innerText);
+			}
+		</script>
+	</head>
+	<body>
+		<h3>js操作html元素的内容</h3>
+		<hr>
+		<input type="button" value="获取元素的内容" onclick="getContext();">
+		<input type="button" value="innerHTML更新元素内容" onclick="updateContext();">
+		<input type="button" value="innerText更新元素内容" onclick="updateContext2();">
+		<hr>
+		<div id="showdiv">
+			<input type="checkbox" name="c" value="1">a
+			<input type="checkbox" name="c" value="2">b
+			<input type="checkbox" name="c" value="3">c
+		</div>
+	</body>
+	<!--
+	操作元素内容学习：
+		获取元素对象
+			获取
+				元素对象名.innerHTML//返回当前元素对象的所有内容，包括HTML标签
+				元素对象名.innerHTML//返回当前元素对象的文本内容，不包括HTML标签
+			修改
+				元素对象名.innerHTML="新的值"//会将原有内容覆盖，并HTML标签会被解析
+					元素对象名.innerHTML=元素对象名.innerHTML+"新的值"//追加效果
+				元素对象名.innerText="新的值"//会将原有内容覆盖，但HTML标签不会被解析，会作为普通文本显示。		
+	-->
+</html>

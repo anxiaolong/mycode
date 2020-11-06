@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>js获取checkbox后面的值</title>
+	<script type="text/javascript">
+		function getChkValue(){  
+		    var obj=document.getElementsByName("intrests");
+		    alert(obj);
+		    for(var i=0;i<obj.length;i++){
+		    	alert(obj[i].value+","+obj[i].nextSibling.nodeValue); 
+		    }       
+		}
+	</script>
+	</head>
+	<body>
+		<input type="checkbox" name="intrests" value="1">a<br> 
+	    <input type="checkbox" name="intrests" value="2">b<br> 
+	    <input type="checkbox" name="intrests" value="3">c<br> 
+	    <input type="checkbox" name="intrests" value="4">d<br> 
+	    <input type="checkbox" name="intrests" value="5">e<br> 
+	    <input type="checkbox" name="intrests" value="6">f<br> 
+	    <input type="checkbox" name="intrests" value="7">g<br> 
+	    <input type="checkbox" name="intrests" value="8">h<br><br> 
+	    <input type="button" onclick="getChkValue()" value="提交"> 
+	</body>
+</html>

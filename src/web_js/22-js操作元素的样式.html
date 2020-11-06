@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js操作元素样式</title>
+		<style type="text/css">
+			#div1{
+				width:200px;
+				height:200px;
+				border:solid 10px red;
+			}
+			.common{
+				width:500px;
+				height:500px;
+				border:solid 10px green;
+				background-color:gray;
+				margin-top:200px;
+			}
+		</style>
+		<script type="text/javascript">
+			//操作style
+			function testOperCss(){
+				var div1=document.getElementById("div1");
+				//添加和修改
+				div1.style.backgroundColor="red";
+				div1.style.margin="auto";
+				div1.style.width="400px";
+				//删除
+				div1.style.border=" ";
+			}
+			
+			//操作className,已有的style属性是不会变的
+			function testOperCss2(){
+				var div1=document.getElementById("div1");
+				div1.className="common";
+				
+				var clean=window.setTimeout(function(){
+					div1.className="";//清除
+				},2000);
+			}
+		</script>
+	</head>
+	<body>
+		<h3>js操作元素样式</h3>
+		<hr>
+		<input type="button" value="通过style属性修改样式" onclick="testOperCss();">
+		<input type="button" value="通过操作className修改样式" onclick="testOperCss2();">
+		<hr>
+		<div id="div1"><b style="font-size:20px;">div1</b></div>
+	</body>
+	<!--
+		js操作元素样式：
+			获取元素对象
+				通过style属性
+					元素对象名.style.样式名="样式值"//添加或者修改
+					元素对象名.style.样式名=""//删除样式
+					注意:
+						以上操作，操作的是HTML的style属性声明中的样式。而不是其他css代码域中的样式。
+				通过className
+					元素对象名.className="新的值"//添加类选择器样式或者修改类选择器样式
+					元素对象名.className=""//删除类样式。
+	-->
+</html>

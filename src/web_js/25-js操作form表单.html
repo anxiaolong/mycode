@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js操作form表单</title>
+		<script type="text/javascript">
+			function testForm(){
+				//通过方法获取form对象
+				var frm=document.getElementById("f1");
+				//通过name获取form对象
+				var frm2=document.frm;
+				//alert(frm==frm2);//两种方法获取到的是同一个对象
+				
+				//获取form的全部对象
+				/*alert(frm.elements.length);
+				var es=frm.elements;
+				for(var i=0;i<es.length;i++){
+					alert(es[i].name);
+				}*/
+				
+				//提交表单
+				//frm.submit();
+				//重置表单数据
+				//frm.reset();
+				
+				//设置action
+				frm.action="https://www.baidu.com/s";
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="操作表单" onclick="testForm();">
+		<hr>
+		<form action="#" method="get" id="f1" name="frm">
+			用户名：<input type="text" id="u1" name="uname" value="java" readonly="readonly">
+			密    码：<input type="password" id="p1" name="pwd" disabled="disabled">
+			<input type="submit" value="提交">
+		</form>
+	</body>
+	<!--
+		js操作form:
+			获取form表单对象
+				使用id:var fm=document.getElementById("fm");
+				使用name属性:var frm=document.frm;
+			获取form下的所有表单元素对象集合
+				fm.elements
+			form表单的常用方法
+				表单对象.submit();//提交表单数据。
+			form的属性操作：
+				表单对象名.action="新的值"//动态的改变数据的提交路径
+				表单对象名.method="新的值"//动态的改变提交方式
+		js表单元素的通用属性
+			只读模式:
+				readonly="readonly"//不可以更改，但是数据可以提交
+			关闭模式：
+				disabled="disabled"//不可以进行任何的操作，数据不会提交。
+	-->
+</html>

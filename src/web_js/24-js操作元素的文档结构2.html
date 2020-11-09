@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>js操作元素的文档结构2</title>
+	<script type="text/javascript">
+		function addFile(){
+			var div=document.getElementById("showdiv");
+			
+			//创建file btn 和br
+			var file=document.createElement("input");
+			var btn=document.createElement("input");
+			var br=document.createElement("br");
+			
+			file.type="file";
+			btn.type="button";
+			btn.value="删除";
+			btn.onclick=function() {
+				//removeChild方法传入的是三个同时创建的对象，所以可以实现一并删除
+				div.removeChild(file);
+				div.removeChild(btn);
+				div.removeChild(br);
+			}
+			
+			//标签对象添加到div中
+			div.appendChild(file);
+			div.appendChild(btn);
+			div.appendChild(br);
+		}
+	</script>
+	</head>
+	<body>
+		<input type="button" value="继续上传" onclick="addFile();">
+		<hr>
+		<div id="showdiv">
+		
+		</div>
+	</body>
+</html>

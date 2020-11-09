@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js操作元素的文档结构</title>
+		<script type="text/javascript">
+			function postFile(){
+				var div=document.getElementById("showdiv");
+				div.innerHTML+="<div><input type='file'> <input type='button' value='删除' onclick='remove(this);'><br><div/>";
+			}
+			function remove(btn){
+				//获取父级div
+				var div=document.getElementById("showdiv");
+				//获取包含button的子级div
+				var cdiv=btn.parentNode;
+				//删除子div
+				div.removeChild(cdiv);
+			}
+		</script>
+	</head>
+	<body>
+		<h3>js操作元素的文档结构 innerHTML直接插入代码</h3>
+		<hr>
+		<input type="button" value="继续上传" onclick="postFile();">
+		<hr>
+		<div id="showdiv">
+			
+		</div>
+	</body>
+	<!--
+		js操作HTML文档结构:
+			增加节点
+			删除节点
+			第一种方式：使用innerHTML
+				div.innerHTML=div.innerHTML+"内容"//增加节点
+				div.innerHTML=""//删除所有子节点
+				父节点.removeChild(子节点对象)//删除指定的子节点。
+	-->
+</html>

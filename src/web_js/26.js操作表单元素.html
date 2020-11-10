@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js操作表单元素</title>
+		<script type="text/javascript">
+			//获取checkbox选中状态
+			function testCkb1(){
+				var ck=document.getElementsByName("cb");
+				//alert(ck);
+				for(var i=0;i<ck.length;i++){
+					alert(ck[i].checked);
+				}
+			}
+			//全选
+			function testCkb2(){
+				var ck=document.getElementsByName("cb");
+				for(var i=0;i<ck.length;i++){
+					ck[i].checked=true;
+				}
+			}
+			//反选
+			function testCkb3(){
+				var ck=document.getElementsByName("cb");
+				for(var i=0;i<ck.length;i++){
+					ck[i].checked=!(ck[i].checked);
+				}
+			}
+			
+			//操作select
+			function testSelect(){
+				var s=document.getElementById("address");
+				//alert(s);
+				var os=s.options;
+				//alert(os);
+				for(var i=0;i<os.length;i++){
+					//alert(os[i].selected);
+					if(os[i].selected){
+						alert(os[i].value+":"+os[i].text);
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h3>js操作表单元素</h3>
+		<hr>
+		<input type="button" value="获取checkbox状态" onclick="testCkb1();">
+		<input type="button" value="全选" onclick="testCkb2();">
+		<input type="button" value="反选" onclick="testCkb3();">
+		<input type="button" value="下拉选择测试" onclick="testSelect();">
+		<hr>
+		<input type="checkbox" id="c1" name="cb">rer1
+		<input type="checkbox" id="c2" name="cb">vbvb7
+		<input type="checkbox" id="c3" name="cb" checked="checked">rrrt3
+		<input type="checkbox" id="c4" name="cb">dfvd5
+		<hr>
+		<select id="address" name="address">
+			<option value="0">--请选择--</option>
+			<option value="1">成都</option>
+			<option value="2" selected="selected">天津</option>
+			<option value="3">大连</option>
+		</select>
+	</body>
+	<!--
+		js操作多选框、单选框
+			被选中状态下在js中checked属性值为true,未选中状态为false;
+		js操作下拉框：
+			被选择的option对象在js中selected属性值为true，未选中为false
+	-->
+</html>

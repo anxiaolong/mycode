@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>js校验form表单</title>
+	<!-- css代码域 -->
+	<style type="text/css">
+		#t1{
+			width:500px;
+			margin:auto;
+		}
+		td{
+			height:30px;
+		}
+		#td1{
+			width:20%;
+		}
+		textarea{
+			width:300px;
+			height:60px;
+		}
+		span{
+			background-image:url(27-code.gif);
+			color:red;
+			height:30px;
+			width:50px;
+			border:solid 1px;
+		}
+		body{
+			background-image:url(27-body.jpg);
+			background-size:cover;
+		}
+		table{
+			background-color:gray;
+			border:solid 2px green;
+		}
+		div{
+			margin-top:50px;
+		}
+	</style>
+	<!-- js代码域 -->
+	<script type="text/javascript">
+		
+	</script>
+	</head>
+	<body>
+		<div id="showdiv">
+			<form action="#" method="get">
+				<table id="t1">
+					<tr>
+						<td id="td1">用户名：</td>
+						<td><input type="text" name="uname"></td>
+					</tr>
+					<tr>
+						<td id="td1">密码：</td>
+						<td><input type="password" name="pwd"></td>
+					</tr>
+					<tr>
+						<td id="td1">确认密码：</td>
+						<td><input type="password" name="pwd2"></td>
+					</tr>
+					<tr>
+						<td id="td1">手机号：</td>
+						<td><input type="text" name="phone"></td>
+					</tr>
+					<tr>
+						<td id="td1">邮箱：</td>
+						<td><input type="text" name="mail"></td>
+					</tr>
+					<tr>
+						<td id="td1">性别：</td>
+						<td>
+							<input name="sex" type="radio" value="0" checked="checked">男
+							<input name="sex" type="radio" value="1">女
+						</td>
+					</tr>
+					<tr>
+						<td id="td1">籍贯：</td>
+						<td>
+							<select name="from">
+								<option value="0" selected="selected">--请选择--</option>
+								<option value="1">成都</option>
+								<option value="2">纽约</option>
+								<option value="3">上海</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td id="td1">爱好：</td>
+						<td>
+							<input name="fav" type="checkbox" value="1">打游戏
+							<input name="fav" type="checkbox" value="2">吃火锅
+							<input name="fav" type="checkbox" value="3">做饭
+							<input name="fav" type="checkbox" value="4">睡觉
+						</td>
+					</tr>
+					<tr>
+						<td id="td1" >个人介绍：</td>
+						<td>
+							<textarea name="intr"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td id="td1">验证码：</td>
+						<td>
+							<input name="code" type="text">
+							<span >验证码</span>
+						</td>
+					</tr>
+					<tr>
+						<td id="td1" colspan="2" align="center">
+							<input name="isagree" type="checkbox">同意注册协定
+						</td>
+					</tr>
+					<tr>
+						<td id="td1" colspan="2" align="center">
+							<input type="submit" value="注册">
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+</html>

@@ -38,12 +38,13 @@
 	</style>
 	<!-- js代码域 -->
 	<script type="text/javascript">
-		//验证码
+		//验证码-4位数字
 		function refreshCode(){
 			var num=Math.floor(Math.random()*9000+1000)
 			var codeSpan=document.getElementById("code");
 			codeSpan.innerHTML=num
 		}
+		
 		//text验证抽象成方法
 		function checkText(textid,spanid,reg){
 			var text=document.getElementById(textid).value;
@@ -62,14 +63,17 @@
 				return false;
 			}
 		}
-		//验证用户名
+		
+		//验证用户名-2~4个汉字
 		function testUname(){
 			return checkText("uname","unameSpan",/^[\u4e00-\u9fa5]{2,4}$/);
 		}
-		//验证密码
+		
+		//验证密码-5~7字母
 		function testPwd(){
 			return checkText("pwd","pwdSpan",/^[a-z]\w{5,7}$/);
 		}
+		
 		//确认密码
 		function testPwd2(){
 			var pwd1=document.getElementById("pwd").value;
@@ -87,15 +91,60 @@
 				}
 			}
 		}
-		//手机号校验
+		
+		//手机号校验-符合手机号码规则
 		function testPhone(){
 			return checkText("phone","phoneSpan",/^1[3,4,5,7,8]\d{9}$/);
 		}
-		//邮箱校验
+		
+		//邮箱校验-符合邮箱规则
 		function testMail(){
 			return checkText("mail","mailSpan",/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+$/);
 		}
 		
+		//籍贯校验-必选
+		function testJg() {
+			var jg=document.getElementById("jg").value;
+			var span=document.getElementById("jgSpan")
+			if(jg==0){
+				span.innerHTML="请选择籍贯";
+				span.style.color="red";
+				return false;
+			}else{
+				return true;
+			}
+		}
+		
+		//爱好校验-必选
+		function testFav(){
+			var favs=document.getElementsByName("fav");
+			var span=document.getElementById("favSpan");
+			for(var i=0;i<favs.length;i++){
+				if(favs[i].checked){
+					return true;
+					break;
+				}
+			}
+			span.innerHTML="爱好至少选择一个";
+			span.style.color="red";
+			return false;
+		}
+		
+		//是否同意协议
+		function testAgree(){
+			document.getElementById("sub").disabled=!document.getElementById("isAgree").checked;
+		}
+		//提交校验
+		function subAll(){
+			testMail();
+			testPhone();
+			testPwd2();
+			testPwd();
+			testUname();
+			testFav();
+			testJg();
+			return testFav()&&testJg()&&testMail()&&testPhone()&&testPwd2()&&testPwd()&&testUname();
+		}
 	</script>
 	</head>
 	<body onload="refreshCode();">
@@ -141,12 +190,13 @@
 					<tr>
 						<td id="td1">籍贯：</td>
 						<td>
-							<select name="from">
+							<select id="jg" name="from" onchange="testJg();">
 								<option value="0" selected="selected">--请选择--</option>
 								<option value="1">成都</option>
 								<option value="2">纽约</option>
 								<option value="3">上海</option>
 							</select>
+							<span id="jgSpan"></span>
 						</td>
 					</tr>
 					<tr>
@@ -156,6 +206,7 @@
 							<input name="fav" type="checkbox" value="2">吃火锅
 							<input name="fav" type="checkbox" value="3">做饭
 							<input name="fav" type="checkbox" value="4">睡觉
+							<span id="favSpan"></span>
 						</td>
 					</tr>
 					<tr>
@@ -173,12 +224,12 @@
 					</tr>
 					<tr>
 						<td id="td1" colspan="2" align="center">
-							<input name="isagree" type="checkbox">同意注册协定
+							<input id="isAgree" name="isagree" type="checkbox" onclick="testAgree();">同意注册协定
 						</td>
 					</tr>
 					<tr>
 						<td id="td1" colspan="2" align="center">
-							<input type="submit" value="注册">
+							<input type="submit" id="sub" value="注册" disabled="disabled" onclick="subAll();">
 						</td>
 					</tr>
 				</table>

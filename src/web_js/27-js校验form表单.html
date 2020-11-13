@@ -19,12 +19,10 @@
 			width:300px;
 			height:60px;
 		}
-		span{
+		#code{
 			background-image:url(27-code.gif);
-			color:red;
 			height:30px;
 			width:50px;
-			border:solid 1px;
 		}
 		body{
 			background-image:url(27-body.jpg);
@@ -40,32 +38,98 @@
 	</style>
 	<!-- js代码域 -->
 	<script type="text/javascript">
+		//验证码
+		function refreshCode(){
+			var num=Math.floor(Math.random()*9000+1000)
+			var codeSpan=document.getElementById("code");
+			codeSpan.innerHTML=num
+		}
+		//text验证抽象成方法
+		function checkText(textid,spanid,reg){
+			var text=document.getElementById(textid).value;
+			var span=document.getElementById(spanid);
+			if(reg.test(text)){
+				span.innerHTML="ok";
+				span.style.color="green";
+				return true;
+			}else if(text==""||text==null){
+				span.innerHTML="不能为空";
+				span.style.color="red";
+				return false;
+			}else{
+				span.innerHTML="不符合规则";
+				span.style.color="red";
+				return false;
+			}
+		}
+		//验证用户名
+		function testUname(){
+			return checkText("uname","unameSpan",/^[\u4e00-\u9fa5]{2,4}$/);
+		}
+		//验证密码
+		function testPwd(){
+			return checkText("pwd","pwdSpan",/^[a-z]\w{5,7}$/);
+		}
+		//确认密码
+		function testPwd2(){
+			var pwd1=document.getElementById("pwd").value;
+			var pwd2=document.getElementById("pwd2").value;
+			var span=document.getElementById("pwd2Span");
+			if(checkText("pwd2","pwd2Span",/^[a-z]\w{5,7}$/)){
+				if(pwd1==pwd2){
+					span.innerHTML="确认密码ok";
+					span.style.color="green";
+					return true;
+				}else{
+					span.innerHTML="两次密码不一致";
+					span.style.color="red";
+					return false;
+				}
+			}
+		}
+		//手机号校验
+		function testPhone(){
+			return checkText("phone","phoneSpan",/^1[3,4,5,7,8]\d{9}$/);
+		}
+		//邮箱校验
+		function testMail(){
+			return checkText("mail","mailSpan",/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+$/);
+		}
 		
 	</script>
 	</head>
-	<body>
+	<body onload="refreshCode();">
 		<div id="showdiv">
 			<form action="#" method="get">
 				<table id="t1">
 					<tr>
 						<td id="td1">用户名：</td>
-						<td><input type="text" name="uname"></td>
+						<td>
+							<input type="text" id="uname" name="uname" onblur="testUname();">
+							<span id="unameSpan"></span>
+						</td>
 					</tr>
 					<tr>
 						<td id="td1">密码：</td>
-						<td><input type="password" name="pwd"></td>
+						<td>
+							<input type="password" id="pwd" name="pwd" onblur="testPwd();">
+							<span id="pwdSpan"></span>
+						</td>
 					</tr>
 					<tr>
 						<td id="td1">确认密码：</td>
-						<td><input type="password" name="pwd2"></td>
+						<td>
+							<input type="password" id="pwd2" name="pwd2" onblur="testPwd2();">
+							<span id="pwd2Span"></span>
+						</td>
 					</tr>
 					<tr>
 						<td id="td1">手机号：</td>
-						<td><input type="text" name="phone"></td>
+						<td><input type="text" id="phone" name="phone" onblur="testPhone();"><span id="phoneSpan"></span></td>
 					</tr>
 					<tr>
 						<td id="td1">邮箱：</td>
-						<td><input type="text" name="mail"></td>
+						<td><input type="text" id="mail" name="mail" onblur="testMail();"><span id="mailSpan"></span></td>
 					</tr>
 					<tr>
 						<td id="td1">性别：</td>
@@ -104,7 +168,7 @@
 						<td id="td1">验证码：</td>
 						<td>
 							<input name="code" type="text">
-							<span >验证码</span>
+							<span id="code" onclick="refreshCode();"></span>
 						</td>
 					</tr>
 					<tr>

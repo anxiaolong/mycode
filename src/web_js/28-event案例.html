@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>event对象案例</title>
+		<style type="text/css">
+			#div1{
+				border:solid 1px;
+				height:300px;
+				width:600px;
+				position:absolute;
+			}
+			img{
+				position:absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+	</body>
+	<!-- js代码域放在底部才能get到div,放在前面就会先执行，也可以通过事件触发 -->
+	<script type="text/javascript">
+			var img=document.createElement("img");
+			img.src="28-wdfj.gif";
+			var div=document.getElementById("div1");
+			div.appendChild(img);
+			
+			function planMove(event){
+				var eve=event||window.event;
+				var x=eve.clientX;
+				var y=eve.clientY;
+				img.style.left=x-33+"px";//这里加减像素是让图片位于鼠标上
+				img.style.top=y-40+"px";
+				//div.innerHTML=(x+"----"+y+"<br>");
+				if(x>300||y>300){
+					document.removeEventListener("mousemove",planMove,true);
+				}
+			}
+			document.addEventListener("mousemove",planMove,true);
+	</script>
+</html>

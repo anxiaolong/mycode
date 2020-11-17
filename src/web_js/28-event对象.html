@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>event对象</title>
+		
+		<style type="text/css">
+			#showdiv{
+				border:solid 1px;
+				width:300px;
+				height:300px;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			//获取鼠标坐标
+			function getXY(){
+				var eve=event||window.event;//因为浏览器差异问题，使用此种方式获取event对象
+				var x=eve.clientX;
+				var y=eve.clientY;
+				alert(x+":"+y);
+			}
+			//获取键盘keyCode
+			function getCode(){
+				var eve=event||window.event;
+				var code=eve.keyCode;
+				alert(code);
+			}
+		</script>
+	</head>
+	<body>
+		<h3>enent对象</h3>
+		<hr>
+		<div id="showdiv" onmousemove="getXY();"></div>
+		<input type="text" onkeydown="getCode();">
+	</body>
+	<!--
+		event对象学习：
+		1、event对象获取鼠标坐标
+		2、event对象获取键盘值
+	-->
+</html>

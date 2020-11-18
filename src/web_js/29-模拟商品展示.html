@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>模拟商品展示</title>
+		<style type="text/css">
+			#showdiv{
+				border:solid 1px;
+				width:360px;
+				height:350px;
+			}
+			#tb{
+				width:300px;
+				height:350px;
+				margin:auto;
+			}
+			#big{
+				height:80%;
+			}
+			#img{
+				width:20%;
+			}
+		</style>
+		<!-- 声明js代码域 -->
+		<script type="text/javascript">
+			function showBig(img,src){
+				var bigPic=document.getElementById("bigPic");
+				bigPic.src=src;
+				img.style.border="solid 1px";
+			}
+			function mouseOut(img){
+				img.style.border="";
+			}
+		</script>
+	</head>
+	<body>
+		<h3>模拟商品展示</h3>
+		<hr>
+		<div id="showdiv">
+			<table id="tb">
+				<tr id="big">
+					<td colspan="5"><img id="bigPic" alt="" src="29-1_big.jpg"></td>
+				</tr>
+				<tr>
+					<td id="img"><img id="1" alt="" src="29-1.jpg" onmouseover="showBig(this,'29-1_big.jpg');" onmouseout="mouseOut(this);"></td>
+					<td id="img"><img id="2" alt="" src="29-2.jpg" onmouseover="showBig(this,'29-2_big.jpg');" onmouseout="mouseOut(this);"></td>
+					<td id="img"><img id="3" alt="" src="29-3.jpg" onmouseover="showBig(this,'29-3_big.jpg');" onmouseout="mouseOut(this);"></td>
+					<td id="img"><img id="4" alt="" src="29-4.jpg" onmouseover="showBig(this,'29-4_big.jpg');" onmouseout="mouseOut(this);"></td>
+					<td id="img"><img id="5" alt="" src="29-5.jpg" onmouseover="showBig(this,'29-5_big.jpg');" onmouseout="mouseOut(this);"></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

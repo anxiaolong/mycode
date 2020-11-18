@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>双搜</title>
+		<script type="text/javascript">		
+			//监控text框的回车事件
+			function enter(){
+				var event=event||window.event;
+				if(event.keyCode=="13"){
+					document.getElementById("search").click();
+				}
+			}
+			
+			function search(){
+				document.getElementById("wd").value=document.getElementById("keyward").value;
+				document.getElementById("q").value=document.getElementById("keyward").value;
+				document.getElementById("bd").submit();
+				document.getElementById("by").submit();
+				document.getElementById("div1").style.display="";
+			}
+		</script>
+	</head>
+	<body>
+		<h3>双搜</h3>
+		<div>
+			<input type="text" id="keyward" onkeydown="enter();">
+			<input type="button" id="search" value="搜索" onclick="search();">
+		</div>
+		<div>
+			<form action="https://www.baidu.com/s" method="get" id="bd" target="bd_frame">
+				<input type="hidden" name="wd" id="wd" />
+			</form>
+			<form action="https://cn.bing.com/search" method="get" id="by" target="by_frame">
+				<input type="hidden" name="q" id="q" />
+			</form>
+		</div>
+		<div id="div1" style="display:none;">
+			<iframe src="" style="width:49%;height:400px;" name="bd_frame"></iframe>
+			<iframe src="" style="width:49%;height:400px;" name="by_frame"></iframe>
+		</div>
+	</body>
+</html>

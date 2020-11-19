@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js操作table</title>
+		<style type="text/css">
+			#tb{
+				width:800px;
+				margin:auto;
+				border:solid 1px;
+			}
+			tr{
+				height:30px;
+			}
+			td{
+				width:16%;
+				border:solid 1px;
+			}	
+			#div1{
+				text-align:center;
+			}
+		</style>
+		<!-- 声明js代码域 -->
+		<script type="text/javascript">
+			//修改数量
+			function updateNum(btn){
+				//获取行对象
+				var tr=btn.parentNode.parentNode;
+				//获取数量所在列
+				var td=tr.cells[4];
+				//列中插入可编辑的text
+				//把innerHTML内容强转位数字类型，判断是否位数字类型
+				if(!isNaN(Number(td.innerHTML))){
+					td.innerHTML="<input type='text' value="+td.innerHTML+" onblur='save(this)'>";
+				}
+			}
+			function save(inp){
+				//获取行对象
+				var tr=inp.parentNode.parentNode;
+				//获取数量所在列
+				var td=tr.cells[4];
+				//输入的值是数字类型才保存
+				if(!isNaN(Number(inp.value))){
+					td.innerHTML=inp.value;
+				}else{
+					alert("数量必须位数字");
+				}
+			}
+			
+			//删除整行
+			function delRow(btn){
+				//获取表对象
+				var tb=document.getElementById("tb");
+				//获取行对象
+				var tr=btn.parentNode.parentNode;
+				//删除整行
+				tb.deleteRow(tr.rowIndex);
+			}
+			
+			//新增行
+			function addRow(){
+				var tb=document.getElementById("tb");
+				var tr=tb.insertRow(tb.rows.length);//在表的最后追加一行
+				tr.insertCell(0).innerHTML="<input name='ck' type='checkbox'>";
+				tr.insertCell(1).innerHTML="java";
+				tr.insertCell(2).innerHTML="刘德华";
+				tr.insertCell(3).innerHTML="68";
+				tr.insertCell(4).innerHTML="1";
+				tr.insertCell(5).innerHTML="<input type='button' value='修改' onclick='updateNum(this);'><input type='button' value='删除' onclick='delRow(this);'>";
+			}
+			
+			//全选
+			function allChicked(inp){
+				var cks=document.getElementsByName("ck");
+				if(inp.checked){
+					for(var i=0;i<cks.length;i++){
+						cks[i].checked=true;
+					}
+				}else{
+					for(var i=0;i<cks.length;i++){
+						cks[i].checked=false;
+					}
+				}
+			}
+			
+			//选择删除
+			function chooseDel(){
+				var tb=document.getElementById("tb");
+				var cks=document.getElementsByName("ck");
+				for(var i=0;i<cks.length;i++){
+					if(cks[i].checked){
+						tb.deleteRow(cks[i].parentNode.parentNode.rowIndex);
+						i--;//这里需要i--是因为cks删一个就少一个，动态变化的
+					}
+				}
+			}
+			
+			//复制行
+			function copy(){
+				var tb=document.getElementById("tb");
+				var cks=document.getElementsByName("ck");
+				for(var i=0;i<cks.length;i++){
+					if(cks[i].checked){
+						//判断有选中的行，新增一行并把行中innerHTML赋给它
+						var tr=tb.insertRow(tb.rows.length);
+						tr.innerHTML=tb.rows[cks[i].parentNode.parentNode.rowIndex].innerHTML;
+					}
+				}
+			}
+			
+			//隔行变色
+			function setColor(){
+				var tb=document.getElementById("tb");
+				var cks=document.getElementsByName("ck");
+				for(var i=0;i<cks.length;i++){
+					if(i%2==0){
+						cks[i].parentNode.parentNode.style.backgroundColor="green";
+					}else{
+						cks[i].parentNode.parentNode.style.backgroundColor="gray";
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<input type="button" value="新增" onclick="addRow();">
+			<input type="button" value="删除" onclick="chooseDel();">
+			<input type="button" value="复制" onclick="copy();">
+			<input type="button" value="隔行变色" onclick="setColor();">
+			<table id="tb">
+				<tr>
+					<td><input name="ck1" type="checkbox" onclick="allChicked(this);">全选</td>
+					<td>书名</td>
+					<td>作者</td>
+					<td>价格</td>
+					<td>数量</td>
+					<td>操作</td>
+				</tr>
+				<tr>
+					<td><input name="ck" type="checkbox"></td>
+					<td>java</td>
+					<td>Rtil</td>
+					<td>38</td>
+					<td>2</td>
+					<td>
+						<input type="button" value="修改" onclick="updateNum(this);">
+						<input type="button" value="删除" onclick="delRow(this);">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<!--
+	js操作表格学习:
+		1、删除行：
+			行对象.rowIndex//返回行对象的角标
+			表格对象.deleteRow(要删除的行对象的角标);
+		2、修改单元内容
+			单元格对象.innerHTML="新的内容";
+			行对象.cells//返回当前行所有的单元格对象的数组
+	-->
+</html>

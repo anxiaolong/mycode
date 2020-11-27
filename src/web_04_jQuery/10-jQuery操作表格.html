@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery操作表格</title>
+		<script src="jquery-3.5.1.min.js" type="text/javascript"></script>
+		<style type="text/css">
+			table{
+				border:solid 1px;
+				margin:auto;
+			}
+			td{
+				border:solid 1px;
+				width:200px;
+				height:20px;
+			}
+			#div1{
+				text-align:center;
+			}
+		</style>
+		<script type="text/javascript">
+			//新增行
+			$(function(){
+				$("#add").click(function(){
+					$("tr:last").after("<tr><td><input type='checkbox'></td><td>te</td><td>7878</td><td>3333</td></tr>");
+				});
+			});
+			
+			//全选
+			$(function(){
+				$("#all").click(function(){
+					$("input[type='checkbox']").prop("checked",true);
+				});
+			});
+			
+			//全不选
+			$(function(){
+				$("#noall").click(function(){
+					$("input[type='checkbox']").prop("checked",false);
+				});
+			});
+			
+			//反选
+			$(function(){
+				$("#fan").click(function(){
+					$("input[type='checkbox']").each(function(){
+						$(this).prop("checked",!$(this).prop("checked"));
+					});
+				});
+			});
+			
+			//隔行变色
+			$(function(){
+				$("#odd").click(function(){
+					$("tr:odd").css("background-color","green");
+				});
+			});
+			
+			//删除选中行
+			$(function(){
+				$("#del").click(function(){
+					$(":checkbox:checked").parents("tr").remove();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<input id="add" type="button" value="新增">
+			<input id="all" type="button" value="全选">
+			<input id="noall" type="button" value="全不选">
+			<input id="fan" type="button" value="反选">
+			<input id="odd" type="button" value="隔行变色">
+			<input id="del" type="button" value="删除">
+			
+		</div>
+		<hr>
+		<div id="showdiv">
+			<table>
+				<tr>
+					<td><input type="checkbox"></td>
+					<td>ddd</td>
+					<td>ddd</td>
+					<td>ddd</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
+<!--
+	jQuery学习的内容：
+		1、jQuery的封装原理（闭包，匿名自调用）
+		2、jQuery的选择器
+		3、jQuery操作元素的属性、内容、样式、文档结构
+		4、jQuery中的事件
+		5、jQuery中的动画
+		注意：
+			一定不要二合一操作
+		js、jQuery是动态的脚本语言，用来操作HTML的，让网页和用户之间互动
+		HTML用来格式化展示信息
+		CSS用来增加网页样式
+		都是由浏览器解析执行的
+	
+	注意：
+		所有的网页都是存储在服务器端，运行在浏览器端。
+		所有的网页都是服务器实时的根据请求发送给浏览器执行的。
+		所有的网页数据可以实现动态的拼接。
+-->
+<!--
+	1、jquery操作checkbox
+		操作checkbox的选择状态使用prop()方法
+			prop("checked")//返回选择的状态，选择返回true,未选返回false
+			prop("checked",true)//置为选择状态
+			prop("checked",false)//置为未选状态
+		使用each进行遍历
+			对象名.each(fn)//在遍历的时候会给每个对象默认执行fn函数
+			this表示js对象
+			$(this)表示jQuery对象
+		parents("标签名")//获取指定的上级元素对象
+		parent()
+	2、jQuery操作表格
+-->	

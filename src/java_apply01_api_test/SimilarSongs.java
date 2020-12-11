@@ -1,4 +1,4 @@
-package api_test;
+package java_apply01_api_test;
 /**
  * ÏàËÆ¸èÇú²âÊÔ½Å±¾
  */

@@ -1,4 +1,4 @@
-package password;
+package java_interview01;
 /**
  * √∞≈›≈≈–Ú∫Õ’€∞Î≤È’“
  */

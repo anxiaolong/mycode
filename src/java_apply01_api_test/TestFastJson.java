@@ -1,4 +1,4 @@
-package api_test;
+package java_apply01_api_test;
 /**
  * 测试fastjson创建json对象和解析json对象
  */

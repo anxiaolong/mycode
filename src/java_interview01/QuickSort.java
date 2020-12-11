@@ -1,4 +1,4 @@
-package password;
+package java_interview01;
 /**
  * 快速排序算法
  * 最好的情况是，每次正好中分，复杂度为O(nlogn) 

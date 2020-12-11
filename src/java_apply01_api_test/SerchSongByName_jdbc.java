@@ -1,4 +1,4 @@
-package api_test;
+package java_apply01_api_test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

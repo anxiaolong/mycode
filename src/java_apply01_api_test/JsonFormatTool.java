@@ -1,4 +1,4 @@
-package api_test;
+package java_apply01_api_test;
 /**
  * 该类提供格式化JSON字符串的方法。
  * 该类的方法formatJson将JSON字符串格式化，方便查看JSON数据。

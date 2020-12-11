@@ -1,4 +1,4 @@
-package api_test;
+package java_apply01_api_test;
 
 import java.io.IOException;
 import java.util.Set;

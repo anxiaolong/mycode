@@ -1,4 +1,3 @@
-/api_test/
 /db.properties
 /java_01_grammar/
 /java_02_oop/
@@ -18,17 +17,10 @@
 /java_15_jdbc/
 /java_16_xml/
 /java_17_junit/
-/password/
-/web_01_html/
-/web_02_css/
-/web_03_js/
-/web_04_jQuery/
-/java_18_servlet_jsp/
 /java_18_web_01_html/
 /java_18_web_02_css/
 /java_18_web_03_js/
 /java_18_web_04_jQuery/
 /java_19_servlet_jsp/
-/java_api_test/
 /java_apply01_api_test/
 /java_interview01/

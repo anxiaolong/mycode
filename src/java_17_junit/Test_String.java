@@ -22,22 +22,22 @@ public class Test_String {
 	
 	@BeforeAll
 	static void init() {
-		System.out.println("环境初始化");
+		System.out.println("Test_String环境初始化");
 	}
 	
 	@AfterAll
 	static void release() {
-		System.out.println("环境还原");
+		System.out.println("Test_String环境还原");
 	}
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		System.out.println("用例开始执行");
+		System.out.println("Test_String用例开始执行");
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		System.out.println("用例执行结束");
+		System.out.println("Test_String用例执行结束");
 	}
 
 	@Test

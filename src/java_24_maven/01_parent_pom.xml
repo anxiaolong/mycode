@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.migu</groupId>
+  <artifactId>test0</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>test1</module>
+  </modules>
+  <!-- 统一设置版本号 -->
+  <properties>
+  	<jsoup-version>1.13.1</jsoup-version>
+  	<mybatis-version>3.5.6</mybatis-version>
+  </properties>
+  <!-- 设置依赖关系 -->
+  <dependencyManagement>
+  	<dependencies>
+	  	<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis</artifactId>
+		    <version>${mybatis-version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.jsoup</groupId>
+		    <artifactId>jsoup</artifactId>
+		    <version>${jsoup-version}</version>
+		</dependency>
+  	</dependencies>
+  </dependencyManagement>
+</project>

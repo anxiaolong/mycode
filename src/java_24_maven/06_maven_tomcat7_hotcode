@@ -1,0 +1,32 @@
+1.编辑tomcat7\conf\tomcat-users.xml
+*****************
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<user username="tomcat" password="tomcat" roles="manager-gui,manager-script"/>
+*****************
+
+2.编辑pom.xml
+*****************
+<plugins>
+	<plugin>
+		<groupId>org.apache.tomcat.maven</groupId>
+		<artifactId>tomcat7-maven-plugin</artifactId>
+		<version>2.2</version>
+		<configuration>
+			<port>9001</port>
+			<path>/ssm</path>
+			<!-- tomcat热部署配置 -->
+			<username>tomcat</username>
+			<password>tomcat</password>
+			<url>http://localhost:8889/manager/text</url>
+		</configuration>
+	</plugin>
+</plugins>
+********************
+
+3.发布命令：
+********************
+第一次发布： tomcat7:deploy
+非第一次发布：  tomcat7:redeploy
+********************
+  	

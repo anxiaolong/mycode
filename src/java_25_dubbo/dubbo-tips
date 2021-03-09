@@ -1,0 +1,154 @@
+一，安装zookeeper作为作为registry注册中心
+	1.解压缩（tar zxvf /usr/local/temp/zookeeper-3.4.8.tar.gz）
+	2.在zookeeper中新建data文件夹,做为zookeeper数据存储文件夹（makir data）
+	3.进入到conf文件夹，复制zoo_sample.cfg,并给新起名的zoo.cfg
+	4.修改zoo.cfg中dataDir属性值为新建data文件夹的路径
+	5.进入到zookeeper/bin文件夹,使用zkServer.sh启动zookeeper（./zkServer.sh start）
+	6.查看状态,其中Mode: standalone表示单机版（./zkServer.sh status）
+	7.为了外部能访问,需要在防火墙中放行2181端口
+二，安装dubbo-admin（可选）
+	（jdk1.8需要特殊的包）
+	1.dubbo-admin-2.5.3.war部署到tomcat
+	2.启动tomcat后，删除war包，防止重启tomcat覆盖修改的配置文件
+	3.dubbo-admin-2.5.3/WEB-INF/dubbo.properties,修改第一行为zookeeper的ip和端口，后面是root和guest的密码
+		dubbo.registry.address=zookeeper://127.0.0.1:2181
+		dubbo.admin.root.password=root
+		dubbo.admin.guest.password=guest
+	4.重启tomcat访问项目，登录root@root进入管理界面
+三，Provider服务的提供者创建
+	1.新建maven父项目（pom类型）：m-user-parent
+	2.新建子项目，写实体类（jar类型）：m-user-pojo
+	3.新建子项目，写dubbo接口（jar类型，依赖m-user-pojo）：m-user-dubbo-service
+	4.新建子项目，写dubbo接口实现（jar类型，依赖m-user-dubbo-service）：m-user-dubbo-service-impl
+	5.m-user-dubbo-service-impl的pom中除了业务业务依赖，还需要添加dubbo服务jar包和zookeeper客户端jar包
+		<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>dubbo</artifactId>
+		<version>2.5.3</version>
+		<exclusions>
+			<exclusion>
+				<artifactId>spring</artifactId>
+				<groupId>org.springframework</groupId>
+			</exclusion>
+		</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.101tec</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>0.10</version>
+		</dependency>
+	6.m-user-dubbo-service-impl中dubbo配置文件信息：
+		<!--给dubbo服务起名-->
+		<dubbo:application name="m-user-dubbo-service"/>
+		<!--registry地址-->	
+		<dubbo:registry address="127.0.0.1:2181" protocol="zookeeper"></dubbo:registry>
+		<!-- port="20880"是dubbo提供服务的端口，协议走dubbo -->
+		<dubbo:protocol name="dubbo" port="20880"></dubbo:protocol>
+		<!--配置接口对应的实现类-->
+		<dubbo:service interface="m_user.dubbo.service.UserDubboService" ref="userDubboServiceImpl"></dubbo:service>
+		<!-- @Service注解和dubbo有冲突 所以使用配置文件管理 -->
+		<bean id="userDubboServiceImpl" class="test.dubbo.service.impl.UserDubboServiceImpl"></bean>
+		<!-- 同时把spring配置文件也加载 -->
+		<import resource="../../applicationContext.xml"/>
+	7.spring配置文件applicationContext.xml正常编写，无特殊配置
+	8.添加打包插件：
+		<!-- 指定项目的打包插件信息 -->
+		<plugin>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<configuration>
+				<!-- 指定打包描述文件的位置：相对项目根目录的路径 -->
+				<!-- assembly打包的描述文件 -->
+				<descriptor>assembly/assembly.xml</descriptor>
+			</configuration>
+			<executions>
+				<execution>
+					<id>make-assembly</id>
+					<phase>package</phase>
+					<goals>
+						<goal>single</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+	9.新建文件夹assembly，里面拷贝dubbo-monitor-simple-2.5.3-assembly.tar.gz解压出来的conf和bin
+	10.文件夹assembly中配置assembly.xml文件
+		<!-- 该字符会添加到最终tar.gz包的名称后面，作为后缀 -->
+		<id>assembly</id>
+		<!-- 指定打包的格式为tar.gz，该类型压缩包在linux中比较常见 -->
+		<formats>
+		<format>tar.gz</format>
+		</formats>
+		<!-- 在tar.gz压缩包中是否包含根文件夹，该根文件夹名称和tar.gz去掉id后缀一致 -->
+		<includeBaseDirectory>true</includeBaseDirectory>
+		<fileSets>
+		<!-- 将项目根路径下assembly/bin路径中的内容打包到压缩包中的根目录下的bin目录中 -->
+		<fileSet>
+			<!-- 相对项目根路径的相对路径 -->
+			<directory>assembly/bin</directory>
+			<outputDirectory>bin</outputDirectory>
+			<!-- 设置最终tar.gz中该文件夹下的权限，跟linux权限写法一致 -->
+			<fileMode>0755</fileMode>
+		</fileSet>
+		<!-- 将项目根路径下assembly/conf路径中的内容打包到压缩包中的根目录下的conf目录中 -->
+		<fileSet>
+			<directory>assembly/conf</directory>
+			<outputDirectory>conf</outputDirectory>
+			<!-- 设置其linux权限 -->
+			<fileMode>0644</fileMode>
+		</fileSet>
+		</fileSets>
+		<!-- 将所有依赖的jar包打包到压缩包中的根目录下的lib目录中 -->
+		<!-- 此lib目录中包含自己开发的项目jar包以及demo_service.jar，还有第三方的jar包 -->
+		<dependencySets>
+			<dependencySet>
+				<outputDirectory>lib</outputDirectory>
+			</dependencySet>
+		</dependencySets>
+	11.父项目maven install的产出物m-user-dubbo-service-impl-0.0.1-SNAPSHOT-assembly.tar.gz
+		解压后运行bin路径下脚本即可启动dubbo服务（启动后在dubbo-admin项目可以看到），Linux和windows都可（正式使用，Linux下有日志记录）
+	12.在项目代码中直接开启dubbo服务(调试使用)
+		import com.alibaba.dubbo.container.Main;
+		public class Test {
+			public static void main(String[] args) {
+				Main.main(args);
+			}
+		}
+四，Consumer服务的消费者创建（Consumer实际上就是提供接口的web项目）
+	1.新建一个web子项目：m-user-dubbo-management，除功能依赖意外，还需要依赖：service接口、dubbo核心包、zookeeper客户端包
+		<dependency>
+	  		<groupId>com.test</groupId>
+		    <artifactId>m-user-dubbo-service</artifactId>
+		    <version>0.0.1-SNAPSHOT</version>
+	  	</dependency>
+	  	<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>2.5.3</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.101tec</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>0.10</version>
+		</dependency>
+	2.在m-user-dubbo-management中正常写接口，实现类中包含一个dubbo注入的接口对象，具体功能使用该对象完成
+		@Reference
+		private UserDubboService userDubboService;
+	3.Consumer方配置文件，没有注册接口的配置，配置了使用了dubbo注解的package
+		<!-- 给当前consumer自定义个名字 -->
+		<dubbo:application name="m-user-dubbo-consumer"/>
+		<!-- 配置注册中心  -->
+		<dubbo:registry address="127.0.0.1:2181" protocol="zookeeper"></dubbo:registry>
+		<!-- 配置注解扫描 -->
+		<dubbo:annotation package="test.service.impl"/>
+	4.maven insatll产出的war包部署到tomcat，即可在dubbo-admin中看到消费者注册成功
+五，Provider和Consumer集群
+	1.把m-user-dubbo-service-impl-0.0.1-SNAPSHOT-assembly.tar.gz部署在多台服务器上即可完成提供者集群
+	2.把m-user-dubbo-management-0.0.1-SNAPSHOT.war部署在多台服务器上即可完成消费者集群
+	3.注册到zookeeper的提供者和消费者会根据dubbo提供的算法，实现负载均衡
+	

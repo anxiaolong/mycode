@@ -1,0 +1,22 @@
+一，redis的安装
+	1.unbutu下安装gcc
+		$ sudo apt install gcc 或 $ sudo apt-get  install  build-essential
+	2.下载、解压、编译
+		$ wget https://download.redis.io/releases/redis-6.2.1.tar.gz
+		$ tar xzf redis-6.2.1.tar.gz
+		$ cd redis-6.2.1
+		//直接make报错，加参数后解决
+		$ make CFLAGS="-march=x86-64"
+	3.后台启动redis-server
+		修改redis.conf文件 daemonize yes
+		启动redis-server ../redis.conf
+		进入redis命令行：redis-cli 
+		停止redis服务：redis-cli shutdown
+	4.
+		a 集群修改conf里面4个地方
+		b 集群命令 -a后面是密码
+		 ./redis-cli --cluster create
+		 127.0.0.1:9006 127.0.0.1:9005
+		 127.0.0.1:9004 127.0.0.1:9003
+		 127.0.0.1:9002 127.0.0.1:9001
+		 --cluster-replicas 1 -a 111111

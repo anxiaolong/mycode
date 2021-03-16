@@ -1,4 +1,4 @@
-一，redis的安装
+一，redis的安装和集群
 	1.unbutu下安装gcc
 		$ sudo apt install gcc 或 $ sudo apt-get  install  build-essential
 	2.下载、解压、编译
@@ -12,11 +12,26 @@
 		启动redis-server ../redis.conf
 		进入redis命令行：redis-cli 
 		停止redis服务：redis-cli shutdown
-	4.
-		a 集群修改conf里面4个地方
-		b 集群命令 -a后面是密码
+	4.redis集群
+		a 修改redis.conf配置
+			port 9001（每个节点的端口号）
+			daemonize yes（后台启动）
+			bind 192.168.119.131（绑定当前机器 IP）
+			dir /usr/local/redis-cluster/9001/data/（数据文件存放位置）
+			pidfile /var/run/redis_9001.pid（pid 9001和port要对应）
+			cluster-enabled yes（启动集群模式）
+			cluster-config-file nodes9001.conf（9001和port要对应）
+			cluster-node-timeout 15000
+			appendonly yes
+		b 改好配置的redis复制5份
+		c 逐个修改复制出的5个redis配置 命令 :%s/9001/9002（其实就是改下端口搞定）
+		d 带上配置文件启动6个redis
+		e 使用redis-cli实现集群（命令执行后会有集群信息打印）
 		 ./redis-cli --cluster create
 		 127.0.0.1:9006 127.0.0.1:9005
 		 127.0.0.1:9004 127.0.0.1:9003
 		 127.0.0.1:9002 127.0.0.1:9001
-		 --cluster-replicas 1 -a 111111
+		 --cluster-replicas 1 
+		f redis-cli -p 9001 -c 命令-c是集群方式进入客户端
+			cluster nodes 查看集群信息
+	6.使用RedisDesktopManager逐个连接redis

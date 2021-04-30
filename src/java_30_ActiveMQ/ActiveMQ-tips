@@ -1,0 +1,10 @@
+一，ActiveMQ安装
+	1.官网下载 wget https://mirrors.bfsu.edu.cn/apache//activemq/5.16.1/apache-activemq-5.16.1-bin.tar.gz
+	2.解压tar -zxvf apache-activemq-5.16.1-bin.tar.gz
+	3.bin目录下./activemq start启动（启动命令权限不足加执行权限再启动）
+	4.http://localhost:8161/admin/index.jsp 访问后台可视化界面（默认admin admin）
+	5.conf下重要配置文件
+		a. activemq.xml更改默认端口61616
+		b. jetty.xml更改后台管理8161
+		c. users.properties设置后台系统账号密码
+		

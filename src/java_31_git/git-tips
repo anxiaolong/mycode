@@ -1,4 +1,5 @@
 常用命令
 1.git status 查看当前差异
 2.git add <file>... 添加文件到版本库
-3.
+3.git commit bin/.gitignore  src/java_31_git/git-tips -m "git update" 提交文件
+4.git push 推送到远程仓库

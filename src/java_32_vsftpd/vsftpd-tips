@@ -20,3 +20,25 @@
 		isolate_network=NO
 	8.ftp 127.0.0.1 测试访问 或使用filezilla测试连接
 	9.添加文件或图片测试访问
+	
+二，通过nginx反向代理ftp资源
+	1.nginx.conf配置设置ftp用户
+		#设置ftp用户
+		user uftp;
+	2.http中添加代理配置
+        server{
+            listen 80;
+            server_name localhost;
+
+            location / {
+                    root /home/uftp/;
+                    index 1.jpg;
+            }
+        }
+     3.sudo service nginx reload 重载配置
+     4.localhost或localhost/1.jpg测试访问ftp资源
+	
+	
+	
+	
+	

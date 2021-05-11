@@ -1,6 +1,6 @@
 一，TestNG安装eclipse插件（TestNG官网有提示安装方式）
 	1.Help-->install new software
-	2.添加一个地址TestNG - https://dl.bintray.com/testng-team/testng-eclipse-release/.
+	2.（官网为最新）添加一个地址TestNG - https://testng.org/testng-eclipse-update-site/
 	3.找到TestNG安装
 二，Maven中添加TestNG依赖
 	<dependency>

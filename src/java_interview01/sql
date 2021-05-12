@@ -1,0 +1,17 @@
+1.成绩表（t_score）：id、学生id（sid）、班级id（cid）、分数（score），每个班级中高于所在班级平均分的学生成绩
+	#单张表不好解决，需要把分组后的结果作为临时表做联合查询
+	SELECT
+		t_score.*,t_temp.temp_avgScore
+	FROM
+		t_score
+	INNER JOIN (
+		SELECT
+			cid AS temp_cid,
+			AVG(score) AS temp_avgScore
+		FROM
+			t_score
+		GROUP BY
+			cid
+	) AS t_temp ON t_score.cid = t_temp.temp_cid
+	WHERE
+		t_score.score > t_temp.temp_avgScore

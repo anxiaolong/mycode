@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
-public class jdbc extends Object {
+public class JDBC_oracle extends Object {
 	public static void main(String[] args) throws Exception {
 		//1.定义：连接，语句，结果集
 		Connection conn = null;
@@ -16,19 +16,20 @@ public class jdbc extends Object {
 		ResultSet rs = null;
 		
 		//2.加载驱动，设置db_url
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		String db_url = "jdbc:mysql://localhost:3306/testjdbc?useSSL=false&serverTimezone=Asia/Shanghai";
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		String db_url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 		
 		//3.创建连接，创建语句，获得结果集
-		conn = DriverManager.getConnection(db_url, "root", "123456");
+		conn = DriverManager.getConnection(db_url, "scott", "111111");
 		System.out.println(conn);
-		String sql = "select * from student;";
+		String sql = "select * from dept";
 		stmt = conn.prepareStatement(sql);
 		rs = stmt.executeQuery();
 		
 		//4.查看结果集
 		while (rs.next()) {
-			System.out.println(rs.getString("name")+" "+rs.getString("pwd"));
+			System.out.println("部门号："+rs.getString(1)+"-->部门名："+rs.getString(2)
+        	+"-->其他信息："+rs.getString(3));
 		}
 		
 		//5.资源回收

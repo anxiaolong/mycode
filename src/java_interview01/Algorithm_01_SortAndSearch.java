@@ -4,7 +4,7 @@ package java_interview01;
  */
 import java.util.Arrays;
 
-public class BubbleSortAndBinarySearch {
+public class Algorithm_01_SortAndSearch {
 	public static void main(String[] args) {
 		int[] arr = {78,43,67,23,12,55,66,33,21,99,76};
 		bubbleSort(arr);

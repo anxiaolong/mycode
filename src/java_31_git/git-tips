@@ -6,3 +6,5 @@
 5.git diff 当前工作目录和上次提交与本地索引间的差异
 6.git fetch 将远程主机的最新内容拉到本地，用户在检查了以后决定是否合并到工作本机分支中
 7.git pull  将远程主机的最新内容拉下来后直接合并，即：git pull = git fetch + git merge，这样可能会产生冲突，需要手动解决
+8.git reset --soft HEAD^ commit之后回退到上一个版本
+9.git reset HEAD  git add . 之后回退到add之前

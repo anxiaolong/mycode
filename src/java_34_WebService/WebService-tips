@@ -1,0 +1,10 @@
+WebService
+
+一，wsimport实现方式
+1.新建pom项目webservice-wsimport
+2.pom中新建ws-server和ws-client模块
+3.ws-server中写webservice接口和实现类
+4.ws-server中发布webservice服务
+5.ws-client中
+	通过jdk自带的命令wsimport -keep http://localhost:8888/ws_server/weather?wsdl 导入webservice服务
+6.ws-client中调用webservice服务

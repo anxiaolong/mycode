@@ -1,0 +1,10 @@
+maven 常用命令
+
+切换到maven项目根目录操作
+
+1.mvn -version 查看版本
+2.mvn clean 清空编译打包文件夹
+3.mvn clean compile 清空后编译
+4.mvn clean package 清空后打包
+5.mvn install 将jar包安装到本地库
+6.mvn deploy 上传传jar到私服或者部署到server

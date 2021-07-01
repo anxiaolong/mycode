@@ -8,3 +8,10 @@
 7.git pull  将远程主机的最新内容拉下来后直接合并，即：git pull = git fetch + git merge，这样可能会产生冲突，需要手动解决
 8.git reset --soft HEAD^ commit之后回退到上一个版本
 9.git reset HEAD  git add . 之后回退到add之前
+10.git branch -r 查看远程分支
+11.git branch 查看本地分支 加-a参数同时查看本地和远程分支
+12.git checkout master 切换分支
+13.git checkout -b dev origin/dev  #作用是checkout远程的dev分支，在本地起名为dev分支，并切换到本地的dev分支
+14.git pull origin dev 切到分支后拉取远程分支代码
+15.git log --stat 查看更新记录包含哪些文件
+16.git show 2ba1b7b73e29b41f4d3dc5a0d3b641d97412964b 查看提交涉及的具体内容

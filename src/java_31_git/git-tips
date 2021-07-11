@@ -44,3 +44,9 @@ git add
 git commit 
 
 
+迁移git到其他电脑
+1.备份C:\Users\Administrator\.ssh 文件夹（私钥和公钥：id_rsa和id_rsa.pub）
+2.备份C:\Users\Administrator\.gitconfig 配置文件（里面写的git个人信息，账号邮箱这些东西）
+3.新电脑上安装git，执行ssh-keygen命令，一路回车后会在对应的路径生产公钥和私钥
+4.备份的文件替换新电脑上生成的文件，配置文件路径一般不变，也直接复制过去
+

@@ -42,3 +42,5 @@ git merge --no-ff dev2 （合并之后有冲突会产生冲突文件）
 修改冲突文件
 git add
 git commit 
+
+

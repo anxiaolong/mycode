@@ -1,0 +1,4 @@
+jmeter命令执行测试
+
+执行测试脚本，收集测试结果，输出html测试报告
+.\jmeter.sh -n -t D:\jmeter-workspace\3w-migu-cn.jmx -l D:\jmeter-workspace\result.jtl -e -o D:\jmeter-workspace\report
